@@ -1,6 +1,7 @@
 import "./App.css";
+import Footer from "./components/Homepage/Footer";
 import { MainRoutes } from "./pages/MainRoutes";
-import Footer from "./components/Footer";
+
 
 function App() {
     return (
