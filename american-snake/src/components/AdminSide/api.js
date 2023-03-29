@@ -1,10 +1,10 @@
 import axios from "axios";
 
-export const getData = async (url) => {
-  try {
-    let res = await axios.get(url);
-    return res;
-  } catch (error) {
-    console.log(error);
-  }
+export const getData = (url) => {
+  return axios
+    .get(url)
+    .then((res) => res.data)
+    .catch((error) => {
+      console.log(error);
+    });
 };

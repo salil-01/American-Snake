@@ -4,7 +4,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { getData } from "../api";
 ChartJS.register(ArcElement, Tooltip, Legend);
-const url = "https://american-eagle-mock-server.onrender.com/products";
+const url = "https://american-eagle-mock-server.onrender.com";
 
 const Chart = () => {
   const [menData, setMenData] = useState(0);
@@ -12,21 +12,26 @@ const Chart = () => {
 
   useEffect(() => {
     //mens data
-    getData(url).then((res) => {
-      console.log(res.data);
-      setMenData(res.data.length);
+    getData(`${url}/men`).then((res)=>{
+      // console.log(res)
+      setMenData(res.length)
+    })
+    //women data
+    getData(`${url}/women`).then((res) => {
+      // console.log(res.data);
+      setWomenData(res.length);
     });
   }, []);
 
-    const data = {
-      datasets: [
-        {
-          data: [menData, womenData],
-          backgroundColor: ["red", "blue"],
-        },
-      ],
-      labels: ["Mens", "Women"],
-    };
+  const data = {
+    datasets: [
+      {
+        data: [menData, womenData],
+        backgroundColor: ["orange", "teal"],
+      },
+    ],
+    labels: ["Mens", "Women"],
+  };
 
   return (
     <>

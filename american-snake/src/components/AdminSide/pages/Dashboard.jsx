@@ -1,5 +1,7 @@
 import { Box, Heading } from "@chakra-ui/react";
 import React from "react";
+import { AllStats } from "../components/AllStats";
+import BarGraph from "../components/BarGraph";
 import Chart from "../components/Chart";
 // import BarChart from "../Components/BarChart";
 // import BasicStatistics from "../Components/BasicStatistics";
@@ -11,7 +13,7 @@ export const Dashboard = () => {
       <Heading fontWeight={"thiner"} as="h2" size="xl">
         Dashboard
       </Heading>
-      {/* <BasicStatistics /> */}
+      <AllStats />
       <Box
         // border={"1px solid black"}
         w={"100%"}
@@ -22,7 +24,7 @@ export const Dashboard = () => {
         
       >
         <Box w={"50%"}>
-          {/* <BarChart /> */}
+          <BarGraph />
         </Box>
         <Box w={"50%"}>
           <Chart />
