@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import { Dashboard } from "../components/AdminSide/pages/Dashboard"
 import { Homepage } from "../components/Homepage/Homepage"
+import Login from "./Login"
 import Productpage from "./ProductPage"
 
 export const MainRoutes = ()=>{
@@ -10,7 +11,7 @@ export const MainRoutes = ()=>{
             <Route path="/" element={<Homepage/>}/>
             <Route path="/admin" element={<Dashboard/>}/>
             <Route path="/products-men" element={<Productpage/>}/>
-            {/* <Route path="/logi */}
+            <Route path="/login" element={<Login/>}/>
         </Routes>
         </>
     )
