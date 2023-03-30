@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import { Dashboard } from "../components/AdminSide/pages/Dashboard"
 import { Homepage } from "../components/Homepage/Homepage"
-import Productpage from "./ProductPage"
+import {MensProduct} from "./MensProduct"
 
 export const MainRoutes = ()=>{
     return (
@@ -9,7 +9,7 @@ export const MainRoutes = ()=>{
         <Routes>
             <Route path="/" element={<Homepage/>}/>
             <Route path="/admin" element={<Dashboard/>}/>
-            <Route path="/products-men" element={<Productpage/>}/>
+            <Route path="/products-men" element={<MensProduct />}/>
             {/* <Route path="/logi */}
         </Routes>
         </>
