@@ -23,7 +23,6 @@ import { CiHeart, CiSearch } from "react-icons/ci";
 import { IoBagOutline, IoPersonOutline } from "react-icons/io5";
 import { useState } from "react";
 
-
 export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
     // eslint-disable-next-line no-unused-vars
@@ -33,11 +32,10 @@ export default function Navbar() {
     const [show, setShow] = useState(false);
     const handleSearchClick = () => {
         setShow((prev) => !prev);
-        console.log("click the search button", show);
     };
 
     return (
-        <Box position={'sticky'} top={0}>
+        <Box position={"sticky"} top={0} zIndex={'overlay'}>
             <Flex
                 bg={useColorModeValue("white", "gray.800")}
                 color={useColorModeValue("gray.600", "white")}
@@ -178,7 +176,17 @@ export default function Navbar() {
                     </Box>
                 </Stack>
             </Flex>
-
+            <Box
+                bgColor={"#1D2B4F"}
+                h={"29px"}
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
+            >
+                <Text color={"white"} fontSize={"12px"}>
+                    Flat 10% off* on first purchase | Use: AEFIRST10
+                </Text>
+            </Box>
             <Collapse in={isOpen} animateOpacity>
                 <MobileNav />
             </Collapse>
@@ -280,7 +288,9 @@ const DesktopNav = () => {
                                     <Link href="/products-men">T-Shirts</Link>
                                 </Text>
                                 <Text>
-                                    <Link href="/products-men">Graphic Tees</Link>
+                                    <Link href="/products-men">
+                                        Graphic Tees
+                                    </Link>
                                 </Text>
                                 <Text>
                                     <Link href="/products-men">Shirts</Link>
@@ -289,7 +299,9 @@ const DesktopNav = () => {
                                     <Link href="/products-men">Jackets</Link>
                                 </Text>
                                 <Text>
-                                    <Link href="/products-men">Hoodies & Sweatshirts</Link>
+                                    <Link href="/products-men">
+                                        Hoodies & Sweatshirts
+                                    </Link>
                                 </Text>
                             </Stack>
                             <Stack
@@ -926,4 +938,3 @@ const NAV_ITEMS = [
         ],
     },
 ];
-
