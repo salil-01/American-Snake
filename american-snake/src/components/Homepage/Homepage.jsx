@@ -1,9 +1,11 @@
-import Footer from "./Footer"
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 
-export const Homepage = ()=>{
-    return(
+export const Homepage = () => {
+    return (
         <div>
-            <Footer/>
+            <Navbar />
+            <Footer />
         </div>
-    )
-}
+    );
+};
