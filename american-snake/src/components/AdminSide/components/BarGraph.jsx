@@ -66,7 +66,7 @@ const BarGraph = () => {
   });
   useEffect(() => {
     const fetchData = async () => {
-      const url = "https://american-eagle-mock-server.onrender.com/men";
+      const url = "https://american-eagle-mock-server.onrender.com/sale";
       const labelSet = [];
       const dataSet1 = [];
       const dataSet2 = [];
@@ -77,8 +77,8 @@ const BarGraph = () => {
         })
         .then((res) => {
           for (const val of res) {
-            dataSet1.push(val.mrp);
-            dataSet2.push(val.price);
+            // dataSet1.push(val.actual-price);
+            // dataSet2.push(val.discount-price);
           }
           setData({
             labels: [

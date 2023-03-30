@@ -9,13 +9,12 @@ import Chart from "../components/Chart";
 
 export const Dashboard = () => {
   return (
-    <>
+    <div style={{border:"1px solid red"}}>
       <Heading fontWeight={"thiner"} as="h2" size="xl">
         Dashboard
       </Heading>
       <AllStats />
       <Box
-        // border={"1px solid black"}
         w={"100%"}
         m={"30px 0px 0px 0px"}
         display={"flex"}
@@ -24,12 +23,12 @@ export const Dashboard = () => {
         
       >
         <Box w={"50%"}>
-          <BarGraph />
+          {/* <BarGraph /> */}
         </Box>
         <Box w={"50%"}>
           <Chart />
         </Box>
       </Box>
-    </>
+    </div>
   );
 };

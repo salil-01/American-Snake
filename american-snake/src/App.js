@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <Link to={"/admin"}>Admin</Link>
+      <Link to={"/admin-dashboard"}>Admin</Link>
       <Link to={"/products-men"}>Products</Link>
       <MainRoutes/>
     </div>
