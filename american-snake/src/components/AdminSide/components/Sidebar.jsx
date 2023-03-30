@@ -19,8 +19,11 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  Input,
+  Spacer,
 } from "@chakra-ui/react";
 import { FiHome, FiMenu, FiBell, FiChevronDown } from "react-icons/fi";
+import { IoMdSettings } from "react-icons/io";
 import { MdAddShoppingCart } from "react-icons/md";
 import { HiUsers } from "react-icons/hi";
 import { TbReportMoney } from "react-icons/tb";
@@ -28,23 +31,18 @@ import { BsBagCheck, BsBag, BsShop } from "react-icons/bs";
 import { AiOutlineBars } from "react-icons/ai";
 import { FaUserFriends } from "react-icons/fa";
 import { useToast } from "@chakra-ui/react";
-
+import { BsSearch } from "react-icons/bs";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const LinkItems = [
-  { name: "DashBoard", icon: FiHome, path: "/dashboard" },
-  { name: "Products", icon: BsBag, path: "/products" },
-  { name: "Add products", icon: MdAddShoppingCart, path: "/addproducts" },
-  { name: "Categories", icon: AiOutlineBars, path: "/categories" },
-  { name: "Orders", icon: BsBagCheck, path: "/orders" },
-  { name: "Users", icon: HiUsers, path: "/users" },
-  { name: "Admins", icon: BsShop, path: "/sellers" },
-  { name: "Transactions", icon: TbReportMoney, path: "/transactions" },
-  { name: "Launch UserSide", icon: FaUserFriends, path: "/" },
+  { name: "DashBoard", icon: FiHome, path: "/admin-dashboard" },
+  { name: "Products", icon: BsBag, path: "/admin-products" },
+  { name: "Add products", icon: MdAddShoppingCart, path: "/admin-addproduct" },
+  { name: "Orders", icon: BsBagCheck, path: "/admin-orders" },
+  { name: "Users", icon: HiUsers, path: "/admin-users" },
+  { name: "Go Back", icon: FaUserFriends, path: "/" },
 ];
 export default function Sidebar({ children }) {
-  const adminName =
-    JSON.parse(localStorage.getItem("adminEmail")) || "yakshith";
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -53,11 +51,12 @@ export default function Sidebar({ children }) {
         fontFamily={
           "Assistant, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
         }
-        bg={useColorModeValue("gray.100", "gray.900")}
+        
       >
         <SidebarContent
           onClose={() => onClose}
           display={{ base: "none", md: "block" }}
+          // border={"1px solid"}
         />
         <Drawer
           autoFocus={false}
@@ -74,7 +73,7 @@ export default function Sidebar({ children }) {
         </Drawer>
         {/* mobilenav */}
         <MobileNav onOpen={onOpen} />
-        <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"white"}>
+        <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"rgb(239, 238, 241)"}>
           {children}
         </Box>
       </Box>
@@ -88,23 +87,20 @@ const SidebarContent = ({ onClose, ...rest }) => {
     <Box
       transition="3s ease"
       bg={useColorModeValue("white", "gray.900")}
-      borderRight="1px"
-      borderRightColor={useColorModeValue("gray.200", "gray.700")}
       w={{ base: "full", md: 60 }}
       pos="fixed"
-      h="full"
+      // h="full"
+      boxShadow={"base"}
+      // marginLeft={"10px"}
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <img
-          src="/Attirely_admin_logo.png"
+          src="american-eagle.png"
           alt="admin_logo"
-          width={"120px"}
+          width={"200px"}
           onClick={() => navigate("/")}
         />
-        <Text fontSize="2xl" fontWeight="extrabold" fontFamily="monospace">
-          Admin
-        </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
@@ -129,7 +125,7 @@ const NavItem = ({ icon, children, ...rest }) => {
         role="group"
         cursor="pointer"
         _hover={{
-          bg: "#3182ce",
+          bg: "#1d2b4f",
           color: "#ffff",
         }}
         {...rest}
@@ -151,8 +147,6 @@ const NavItem = ({ icon, children, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
-  const adminName =
-    JSON.parse(localStorage.getItem("adminEmail")) || "yakshith";
   const navigate = useNavigate();
   const toast = useToast();
   return (
@@ -162,9 +156,10 @@ const MobileNav = ({ onOpen, ...rest }) => {
       height="20"
       alignItems="center"
       bg={useColorModeValue("white", "gray.900")}
-      borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-      justifyContent={{ base: "space-between", md: "flex-end" }}
+      style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
+      mb={"2px"}
+    
+      justifyContent={{ base: "space-between", md: "space-between" }}
       {...rest}
     >
       <IconButton
@@ -174,13 +169,34 @@ const MobileNav = ({ onOpen, ...rest }) => {
         aria-label="open menu"
         icon={<FiMenu />}
       />
-      <HStack spacing={{ base: "0", md: "6" }}>
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell />}
-        />
+      <Box margin={"auto"}>
+        <HStack mr={"10px"}>
+          <Input
+            type={"text"}
+            height={"30"}
+            width={"300px"}
+            border={"1px dotted gray"}
+            placeholder="Search for Product"
+            _placeholder={{ opacity: 1, color: "gray.500" }}
+          ></Input>
+          <Icon as={BsSearch} height={"20px"} width={"10%"} />
+        </HStack>
+      </Box>
+      <HStack>
+        <HStack display={{ base: "none", md: "flex" }}>
+          <IconButton
+            size="lg"
+            variant="ghost"
+            aria-label="open menu"
+            icon={<FiBell />}
+          />
+          <IconButton
+            size="lg"
+            variant="ghost"
+            aria-label="open menu"
+            icon={<IoMdSettings />}
+          />
+        </HStack>
         <Flex alignItems={"center"}>
           <Menu>
             <MenuButton
@@ -188,24 +204,24 @@ const MobileNav = ({ onOpen, ...rest }) => {
               transition="all 0.3s"
               _focus={{ boxShadow: "none" }}
             >
-              <HStack>
-                <Avatar
-                  size={"sm"}
-                  src={
-                    "https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
-                  }
-                />
-                <VStack
-                  display={{ base: "none", md: "flex" }}
-                  alignItems="flex-start"
-                  spacing="1px"
-                  ml="2"
-                >
-                  <Text fontSize="sm">{adminName}</Text>
+              <HStack spacing="20px">
+                {/* <Avatar size={"lg"} src="zenitsu.png" /> */}
+                <img src="zenitsu.png" width={"60px"} alt="profile_img" />
+
+                <Box padding={"5px"} display={{ base: "none", md: "block" }}>
                   <Text fontSize="xs" color="gray.600">
-                    Admin
+                    <span style={{ fontSize: "16px", fontWeight: "600" }}>
+                      {" "}
+                      Salil
+                    </span>{" "}
+                    <br />
+                    <span style={{ fontSize: "12px", fontWeight: "600" }}>
+                      {" "}
+                      Admin
+                    </span>
                   </Text>
-                </VStack>
+                </Box>
+
                 <Box display={{ base: "none", md: "flex" }}>
                   <FiChevronDown />
                 </Box>
