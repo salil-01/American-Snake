@@ -277,19 +277,19 @@ const DesktopNav = () => {
                             >
                                 <Text fontWeight={"bold"}>TOPS</Text>
                                 <Text>
-                                    <Link>T-Shirts</Link>
+                                    <Link href="/products-men">T-Shirts</Link>
                                 </Text>
                                 <Text>
-                                    <Link>Graphic Tees</Link>
+                                    <Link href="/products-men">Graphic Tees</Link>
                                 </Text>
                                 <Text>
-                                    <Link>Shirts</Link>
+                                    <Link href="/products-men">Shirts</Link>
                                 </Text>
                                 <Text>
-                                    <Link>Jackets</Link>
+                                    <Link href="/products-men">Jackets</Link>
                                 </Text>
                                 <Text>
-                                    <Link>Hoodies & Sweatshirts</Link>
+                                    <Link href="/products-men">Hoodies & Sweatshirts</Link>
                                 </Text>
                             </Stack>
                             <Stack
@@ -300,13 +300,13 @@ const DesktopNav = () => {
                             >
                                 <Text fontWeight={"bold"}>BOTTOMS</Text>
                                 <Text>
-                                    <Link>Shorts</Link>
+                                    <Link href="/products-men">Shorts</Link>
                                 </Text>
                                 <Text>
-                                    <Link>Joggers</Link>
+                                    <Link href="/products-men">Joggers</Link>
                                 </Text>
                                 <Text>
-                                    <Link>Chinos</Link>
+                                    <Link href="/products-men">Chinos</Link>
                                 </Text>
                             </Stack>
                             <Stack
@@ -327,7 +327,7 @@ const DesktopNav = () => {
                                     SHOES & ACCESSORIES
                                 </Text>
                                 <Text>
-                                    <Link>Socks</Link>
+                                    <Link href="/products-men">Socks</Link>
                                 </Text>
                                 <Text>
                                     <Link>Belts</Link>
