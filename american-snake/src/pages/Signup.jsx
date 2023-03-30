@@ -1,36 +1,39 @@
 import React from "react";
 import styled from "styled-components";
 
-const Login = () => {
+const Signup = () => {
   const [loginUser, setLoginUser] = React.useState({
     email: "",
     password: "",
     name: "",
     mobile: ""
   });
-  const verifyLogin = async (e) => {
+  const verfiyform = async (e) => {
     e.preventDefault();
     try {
-      let usersData = await fetch(`https://american-eagle-mock-server.onrender.com/user`);
-      let data = await usersData.json();
-      for (let i = 0; i <= data.length - 1; i++) {
-        if (
-          loginUser.email === data[i].email &&
-          loginUser.password === data[i].password
-        ) {
-          alert(`Welcome Back ${data[i].name}`);
-          return;
-        }
-      }
-      alert("Login Error");
+      await fetch(`https://american-eagle-mock-server.onrender.com/user`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(loginUser),
+      });
+      alert("Signup sucess")
     } catch (error) {
       console.log("error ", error);
     }
   };
   return (
     <DIV>
-      <h1>Login page</h1>
-      <form onSubmit={verifyLogin}>
+      <h1>Signup page</h1>
+      <form onSubmit={verfiyform}>
+        <input
+          onChange={(e) => setLoginUser({ ...loginUser, name: e.target.value })}
+          required
+          type="text"
+          name="name"
+          placeholder="Enter your Name"
+        />
+        <br/>
+        <br/>
         <input
           onChange={(e) =>
             setLoginUser({ ...loginUser, email: e.target.value })
@@ -46,6 +49,7 @@ const Login = () => {
           onChange={(e) =>
             setLoginUser({ ...loginUser, password: e.target.value })
           }
+          
           required
           type="password"
           name="password"
@@ -53,13 +57,24 @@ const Login = () => {
         />
         <br/>
         <br/>
-        <button onSubmit="submit">Submit now</button>
+        <input
+          onChange={(e) =>
+            setLoginUser({ ...loginUser, mobile: e.target.value })
+          }
+          required
+          type="number"
+          name="mobile"
+          placeholder="Enter your Phone Number"
+        />
+        <br/>
+        <br/>
+        <button>Submit now</button>
       </form>
     </DIV>
   );
 };
 
-export default Login;
+export default Signup;
 
 const DIV = styled.div`
 width: 400px;
