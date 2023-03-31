@@ -16,7 +16,7 @@ export const ProductCarousel = () => {
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: 3,
+            items: 2,
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
@@ -44,7 +44,7 @@ export const ProductCarousel = () => {
                             >
                                 Rs. 3,999
                             </Text>
-                            <Text fontSize={"12px"}>Rs. 1,599</Text>
+                            <Text fontSize={"12px"} color={'red'}>Rs. 1,599</Text>
                         </HStack>
                     </Stack>
                 </Box>
@@ -66,7 +66,7 @@ export const ProductCarousel = () => {
                             >
                                 Rs. 3,999
                             </Text>
-                            <Text fontSize={"12px"}>Rs. 1,599</Text>
+                            <Text fontSize={"12px"} color={'red'}>Rs. 1,599</Text>
                         </HStack>
                     </Stack>
                 </Box>
@@ -87,7 +87,7 @@ export const ProductCarousel = () => {
                             >
                                 Rs. 4,499
                             </Text>
-                            <Text fontSize={"12px"}>Rs. 2,699</Text>
+                            <Text fontSize={"12px"} color={'red'}>Rs. 2,699</Text>
                         </HStack>
                     </Stack>
                 </Box>
@@ -108,7 +108,7 @@ export const ProductCarousel = () => {
                             >
                                 Rs. 1,299
                             </Text>
-                            <Text fontSize={"12px"}>Rs. 519</Text>
+                            <Text fontSize={"12px"} color={'red'}>Rs. 519</Text>
                         </HStack>
                     </Stack>
                 </Box>
@@ -129,7 +129,7 @@ export const ProductCarousel = () => {
                             >
                                 Rs. 4,999
                             </Text>
-                            <Text fontSize={"12px"}>Rs. 2,999</Text>
+                            <Text fontSize={"12px"} color={'red'}>Rs. 2,999</Text>
                         </HStack>
                     </Stack>
                 </Box>
@@ -150,7 +150,7 @@ export const ProductCarousel = () => {
                             >
                                 Rs. 2,999
                             </Text>
-                            <Text fontSize={"12px"}>Rs. 1,499</Text>
+                            <Text fontSize={"12px"} color={'red'}>Rs. 1,499</Text>
                         </HStack>
                     </Stack>
                 </Box>
@@ -172,7 +172,7 @@ export const ProductCarousel = () => {
                             >
                                 Rs. 3,999
                             </Text>
-                            <Text fontSize={"12px"}>Rs. 1,599</Text>
+                            <Text fontSize={"12px"} color={'red'}>Rs. 1,599</Text>
                         </HStack>
                     </Stack>
                 </Box>
@@ -194,13 +194,13 @@ export const ProductCarousel = () => {
                             >
                                 Rs. 3,999
                             </Text>
-                            <Text fontSize={"12px"}>Rs. 1,599</Text>
+                            <Text fontSize={"12px"} color={'red'}>Rs. 1,599</Text>
                         </HStack>
                     </Stack>
                 </Box>
                 <Box w={"212px"}>
                     <Stack direction={"column"} spacing={3}>
-                        <Image src="https://imagescdn.aeo.in/img/app/product/2/285571-1205992.jpg?w=317&auto=format" />
+                        <Image src="https://imagescdn.aeo.in/img/app/product/8/861308-10410862.jpg?w=203&auto=format,compress" />
                         <Text
                             fontSize={"14px"}
                             fontWeight={"600"}
@@ -216,13 +216,13 @@ export const ProductCarousel = () => {
                             >
                                 Rs. 3,999
                             </Text>
-                            <Text fontSize={"12px"}>Rs. 1,599</Text>
+                            <Text fontSize={"12px"} color={'red'}>Rs. 1,599</Text>
                         </HStack>
                     </Stack>
                 </Box>
                 <Box w={"212px"}>
                     <Stack direction={"column"} spacing={3}>
-                        <Image src="https://imagescdn.aeo.in/img/app/product/2/285571-1205992.jpg?w=317&auto=format" />
+                        <Image src="https://imagescdn.aeo.in/img/app/product/8/861385-10177709.jpg?w=203&auto=format,compress" />
                         <Text
                             fontSize={"14px"}
                             fontWeight={"600"}
@@ -238,13 +238,13 @@ export const ProductCarousel = () => {
                             >
                                 Rs. 3,999
                             </Text>
-                            <Text fontSize={"12px"}>Rs. 1,599</Text>
+                            <Text fontSize={"12px"} color={'red'}>Rs. 1,599</Text>
                         </HStack>
                     </Stack>
                 </Box>
                 <Box w={"212px"}>
                     <Stack direction={"column"} spacing={3}>
-                        <Image src="https://imagescdn.aeo.in/img/app/product/2/285571-1205992.jpg?w=317&auto=format" />
+                        <Image src="https://imagescdn.aeo.in/img/app/product/8/861324-10410871.jpg?w=203&auto=format,compress" />
                         <Text
                             fontSize={"14px"}
                             fontWeight={"600"}
@@ -260,7 +260,7 @@ export const ProductCarousel = () => {
                             >
                                 Rs. 3,999
                             </Text>
-                            <Text fontSize={"12px"}>Rs. 1,599</Text>
+                            <Text fontSize={"12px"} color={'red'}>Rs. 1,599</Text>
                         </HStack>
                     </Stack>
                 </Box>

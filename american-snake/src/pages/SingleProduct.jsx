@@ -109,7 +109,7 @@ const SingleProduct = () => {
             >
                 {/* Image section */}
                 <Box
-                    w={{lg: "540px", base: 'none'}}
+                    w={{ lg: "540px", base: "none" }}
                     // border={"1px dashed black"}
                     padding={"15px"}
                     // h={"668px"}
@@ -133,7 +133,10 @@ const SingleProduct = () => {
                         </Box>
                         {/* Main Image Section */}
                         <Box>
-                            <Image w={{lg:'100%', base:'70%'}} src={image_front} />
+                            <Image
+                                w={{ lg: "100%", base: "70%" }}
+                                src={image_front}
+                            />
                         </Box>
                     </Stack>
                 </Box>
@@ -203,12 +206,15 @@ const SingleProduct = () => {
                             </Text>
                         </Box>
                         <Box>
-                            <Stack direction={"row"}>
+                            <Stack
+                                direction={"row"}
+                                justifyContent={{ base: "space-between" }}
+                            >
                                 <Select
                                     placeholder="Size"
                                     borderRadius={0}
                                     fontSize={"12px"}
-                                    w={{ lg: "222px", base: "none" }}
+                                    w={{ lg: "222px", base: "250px" }}
                                 >
                                     <option value="m">M</option>
                                     <option value="l">L</option>
@@ -252,14 +258,14 @@ const SingleProduct = () => {
                             This size is available online only.
                         </Text>
                         <Box>
-                            <HStack>
+                            <HStack justifyContent={{ base: "space-between" }}>
                                 <Button
                                     bgColor={"black"}
                                     color={"white"}
                                     borderRadius={0}
                                     fontSize={"13px"}
-                                    w={{ lg: "252px" }}
-                                    h={{ lg: "50px" }}
+                                    w={{ lg: "252px", base: "252px" }}
+                                    h={{ lg: "50px", base: "50px" }}
                                     _hover={"none"}
                                 >
                                     ADD TO BAG
@@ -267,7 +273,7 @@ const SingleProduct = () => {
                                 <Button
                                     variant="ghost"
                                     w={{ lg: "64px" }}
-                                    h={{ lg: "50px" }}
+                                    h={{ lg: "50px", base: "50px" }}
                                     borderRadius={0}
                                     border={"2px solid black"}
                                 >
@@ -283,11 +289,11 @@ const SingleProduct = () => {
                             Return Policy
                         </Link>
                         <Box>
-                            <HStack>
+                            <HStack justifyContent={{ base: "space-between" }}>
                                 <Input
                                     type="text"
-                                    w={{ lg: "252px" }}
-                                    h={{ lg: "50px" }}
+                                    w={{ lg: "252px", base: "252px" }}
+                                    h={{ lg: "50px", base: "50px" }}
                                     borderRadius={0}
                                     placeholder="Enter Delivery Pin Code"
                                     fontSize={"12px"}
@@ -295,7 +301,7 @@ const SingleProduct = () => {
                                 <Button
                                     variant="ghost"
                                     w={{ lg: "64px" }}
-                                    h={{ lg: "50px" }}
+                                    h={{ lg: "50px", base: "50px" }}
                                     borderRadius={0}
                                     border={"2px solid black"}
                                     fontSize={"12px"}
