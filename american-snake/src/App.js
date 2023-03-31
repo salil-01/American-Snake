@@ -7,6 +7,7 @@ function App() {
     <div className="App">
       <Link to={"/admin-dashboard"}>Admin</Link>
       <Link to={"/products-men"}>Products</Link>
+      <Link to={"/singleproduct/1"}>SingleProduct</Link>
       <MainRoutes/>
     </div>
   );
