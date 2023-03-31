@@ -13,6 +13,7 @@ import {MensProduct} from "./MensProduct"
 import Login from "./Login"
 
 import Signup from "./Signup"
+import Cartpage from "./Cartpage"
 
 
 
@@ -47,6 +48,8 @@ export const MainRoutes = ()=>{
             {/* <Route path="/logi */}
             
             <Route path="/login" element={<Login/>}/>
+
+            <Route path="/cart" element={<Cartpage/>}/>
 
         </Routes>
         </>
