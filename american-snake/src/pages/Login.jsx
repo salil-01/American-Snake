@@ -3,11 +3,8 @@ import styled from "styled-components";
 import {
   Flex,
   Stack,
-  Link,
   Heading,
-  Text,
   useColorModeValue,
-  FormLabel,
 } from "@chakra-ui/react";
 import Footer from "../components/Homepage/Footer";
 
