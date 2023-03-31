@@ -8,6 +8,7 @@ function App() {
       <Link to={"/admin-dashboard"}>Admin</Link>
       <Link to={"/bag"}>Bag</Link>
       <Link to={"/products-men"}>Products</Link>
+      <Link to={"/singleproduct/1"}>SingleProduct</Link>
       <MainRoutes/>
     </div>
   );
