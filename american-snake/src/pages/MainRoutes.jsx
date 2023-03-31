@@ -12,39 +12,43 @@ import Login from "./Login";
 
 import Signup from "./Signup";
 
-export const MainRoutes = () => {
+import Cartpage from "./Cartpage"
+
+export const MainRoutes = ()=>{
     return (
         <>
-            <Routes>
-                <Route path="/" element={<Homepage />} />
+        <Routes>
+            <Route path="/" element={<Homepage/>}/>
 
-                <Route
-                    path="/admin-dashboard"
-                    element={
-                        <Sidebar>
-                            <Dashboard />
-                        </Sidebar>
-                    }
-                />
-                <Route
-                    path="/admin-addproduct"
-                    element={
-                        <Sidebar>
-                            <AddProduct />
-                        </Sidebar>
-                    }
-                />
+            
+    
+            <Route path="/admin-dashboard" element={
+                <Sidebar>
+                    <Dashboard/>
+                </Sidebar>
+            }/>
+            <Route path="/admin-addproduct" element={
+                <Sidebar>
+                    <AddProduct/>
+                </Sidebar>
+            }/>
 
-                <Route path="/admin" element={<Dashboard />} />
+            <Route path="/admin" element={<Dashboard/>}/>
 
-                <Route path="/signup" element={<Signup />} />
+         
+            <Route path="/signup" element={<Signup/>}/>
 
-                <Route path="/products-men" element={<MensProduct />} />
 
-                <Route path="/singleproduct/:id" element={<SingleProduct />} />
+            <Route path="/products-men" element={<MensProduct />}/>
 
-                <Route path="/login" element={<Login />} />
-            </Routes>
+            <Route path="/singleproduct/:id" element={<SingleProduct />} />
+            
+            <Route path="/login" element={<Login/>}/>
+
+            <Route path="/cart" element={<Cartpage/>}/>
+
+        </Routes>
+
         </>
     );
 };
