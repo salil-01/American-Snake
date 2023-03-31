@@ -264,7 +264,7 @@ export default Footer;
 const DIV = styled.div`
     .footerBox {
         height: 305px;
-        width: 477px;
+        width: 100%;
         /* border: 1px dashed red; */
         text-align: left;
         padding: 26px 10px 12px 10px;

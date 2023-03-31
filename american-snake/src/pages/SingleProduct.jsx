@@ -109,7 +109,7 @@ const SingleProduct = () => {
             >
                 {/* Image section */}
                 <Box
-                    w={"540px"}
+                    w={{lg: "540px", base: 'none'}}
                     // border={"1px dashed black"}
                     padding={"15px"}
                     // h={"668px"}
@@ -133,7 +133,7 @@ const SingleProduct = () => {
                         </Box>
                         {/* Main Image Section */}
                         <Box>
-                            <Image src={image_front} />
+                            <Image w={{lg:'100%', base:'70%'}} src={image_front} />
                         </Box>
                     </Stack>
                 </Box>
@@ -311,12 +311,12 @@ const SingleProduct = () => {
             {/* Product Details */}
             <HStack
                 display={"flex"}
+                flexDirection={{ lg: "row", base: "column", md: "column" }}
                 alignItems={"stretch"}
                 w={"70%"}
                 margin={"auto"}
                 justifyContent={"space-evenly"}
                 padding={"20px 10px"}
-                
             >
                 <Box padding={"2px"}>
                     <Stack>
@@ -412,12 +412,10 @@ const SingleProduct = () => {
                 </Box>
             </HStack>
 
-
             {/* Product Carousel */}
-            <Box margin={'30px 15px'}>
-            <ProductCarousel />
+            <Box margin={"30px 15px"}>
+                <ProductCarousel />
             </Box>
-
 
             {/* Footer */}
             <Footer />
