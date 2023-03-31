@@ -15,19 +15,19 @@ import {
   ModalCloseButton,
   ModalHeader,
   ModalFooter,
-  useToast,
   FormControl,
   FormLabel,
   Tooltip,
   HStack,
   Divider,
 } from "@chakra-ui/react";
-import styles from "./Bag.css";
+import "./Bag.css";
 import React, { useState } from "react";
 import { BsTag } from "react-icons/bs";
 import { TbTruckDelivery } from "react-icons/tb";
-import { useDispatch } from "react-redux";
+
 import CardDetail from "../components/Bag/Payment";
+import { CheckIcon } from "@chakra-ui/icons";
 
 const initialData = {
   name: "",
@@ -41,33 +41,10 @@ export const Bag = () => {
   const [formData, setFormData] = useState(initialData);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // const toast = useToast();
-  // const navigate = useNavigate();
-
-  // const data = useSelector((store) => {
-  //   return store.cartReducer.cart;
-  // });
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  // // delete logic ***************************
-
-  // const handledelet = (el) => {
-  //   const filterdata = data.filter((t) => t.id != el.id);
-
-  //   dispatch(addToCart(id, filterdata));
-  // };
-  // login of cart ********************************
-  // let value = 0;
-  // let offerValue = 0;
-  // data.map((el) => {
-  //   offerValue += Number(el.offerPrice) * el.qtt;
-  //   return (value = value + Number(el.originalPrice) * el.qtt);
-  // });
-  // const finalAmount = offerValue;
-  // offerValue = value - offerValue;
 
   return (
     <div>
@@ -121,7 +98,7 @@ export const Bag = () => {
             </Button>
             <Box>
               <Center>
-                <Text as={"h3"} fontWeight={"bold"}></Text>
+                <Text as={"h3"} fontWeight={"bold"}>Current Address</Text>
               </Center>
               {formData.name ? (
                 <p style={{ textAlign: "left" }}>
@@ -151,6 +128,14 @@ export const Bag = () => {
                 <p style={{ textAlign: "left" }}>
                   {" "}
                   {`City : ${formData.city}`}
+                </p>
+              ) : (
+                ""
+              )}
+              {formData.state ? (
+                <p style={{ textAlign: "left" }}>
+                  {" "}
+                  {`State : ${formData.state}`}
                 </p>
               ) : (
                 ""
@@ -460,10 +445,13 @@ export const Bag = () => {
               </p>
               <hr />
             </Flex>
+            <Text fontSize={"13px"} marginTop={"15px"} fontWeight={"500"}>
+              <CheckIcon /> Safe and Secure Payments. Easy returns. 100%
+              Authentic products
+            </Text>
           </Box>
         </Box>
       </Grid>
-      {/* </Center> */}
       {/* <Footer /> */}
     </div>
   );
