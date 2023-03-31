@@ -1,6 +1,9 @@
 import axios from "axios";
 import {
+  DELETE_PRODUCT_SUCCESS,
+  GET_ORDER_SUCCESS,
   GET_PRODUCT_SUCCESS,
+  PATCH_ORDER_SUCCESS,
   PATCH_PRODUCT_SUCCESS,
   POST_PRODUCT_SUCCESS,
   PRODUCT_FAILURE,
@@ -36,7 +39,7 @@ export const addProductWomen = (productData) => async (dispatch) => {
 export const getProduct = (dispatch) => {
   dispatch({ type: PRODUCT_REQUEST });
   axios
-    .get(url)
+    .get(`${url}/men`)
     .then((res) => {
       dispatch({ type: GET_PRODUCT_SUCCESS, payload: res.data });
     })
@@ -46,12 +49,53 @@ export const getProduct = (dispatch) => {
 };
 
 //patching data
-export const editProduct = (dataobj, id) => (dispatch) => {
+export const editProduct = (dataobj, id) => async (dispatch) => {
   dispatch({ type: PRODUCT_REQUEST });
-  axios
-    .patch(`${url}/${id}`, dataobj)
+  await axios
+    .patch(`${url}/men/${id}`, dataobj)
     .then(() => {
       dispatch({ type: PATCH_PRODUCT_SUCCESS });
+    })
+    .catch(() => {
+      dispatch({ type: PRODUCT_FAILURE });
+    });
+};
+
+//delete product
+export const deleteProduct = (id) => async (dispatch) => {
+  dispatch({ type: PRODUCT_REQUEST });
+  await axios
+    .delete(`${url}/men/${id}`)
+    .then(() => {
+      dispatch({ type: DELETE_PRODUCT_SUCCESS });
+    })
+    .catch(() => {
+      dispatch({ type: PRODUCT_FAILURE });
+    });
+};
+
+//get orders
+export const getOrders = (dispatch) => {
+  dispatch({ type: PRODUCT_REQUEST });
+  axios
+    .get(`${url}/order`)
+    .then((res) => {
+      dispatch({ type: GET_ORDER_SUCCESS, payload: res.data });
+    })
+    .catch(() => {
+      dispatch({ type: PRODUCT_FAILURE });
+    });
+};
+
+//change order status
+export const changeOrderStatus = (id, value) => async (dispatch) => {
+  dispatch({ type: PRODUCT_REQUEST });
+  await axios
+    .patch(`${url}/order/${id}`, {
+      status: value,
+    })
+    .then(() => {
+      dispatch({ type: PATCH_ORDER_SUCCESS });
     })
     .catch(() => {
       dispatch({ type: PRODUCT_FAILURE });

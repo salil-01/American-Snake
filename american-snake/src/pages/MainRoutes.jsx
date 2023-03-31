@@ -13,6 +13,10 @@ import {MensProduct} from "./MensProduct"
 import Login from "./Login"
 
 import Signup from "./Signup"
+import { AllProducts } from "../components/AdminSide/pages/Allproducts"
+import { EditProduct } from "../components/AdminSide/pages/EditProduct"
+import { AllUsers } from "../components/AdminSide/pages/AllUsers"
+import { AllOrders } from "../components/AdminSide/pages/AllOrders"
 
 
 
@@ -22,9 +26,6 @@ export const MainRoutes = ()=>{
         <>
         <Routes>
             <Route path="/" element={<Homepage/>}/>
-
-            
-    
             <Route path="/admin-dashboard" element={
                 <Sidebar>
                     <Dashboard/>
@@ -35,10 +36,26 @@ export const MainRoutes = ()=>{
                     <AddProduct/>
                 </Sidebar>
             }/>
-
-            <Route path="/admin" element={<Dashboard/>}/>
-
-         
+            <Route path="/admin-products" element={
+                <Sidebar>
+                    <AllProducts/>
+                </Sidebar>
+            }/>
+             <Route path="/admin-editproduct/:id" element={
+                <Sidebar>
+                    <EditProduct/>
+                </Sidebar>
+            }/>
+         <Route path="/admin-users" element={
+                <Sidebar>
+                    <AllUsers/>
+                </Sidebar>
+            }/>
+            <Route path="/admin-orders" element={
+                <Sidebar>
+                    <AllOrders/>
+                </Sidebar>
+            }/>
             <Route path="/signup" element={<Signup/>}/>
 
 
