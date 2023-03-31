@@ -23,10 +23,10 @@ import {
   Image,
   useToast,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useState, } from "react";
 import { useRef } from "react";
-let cartdata = JSON.parse(localStorage.getItem("cartdata")) || [];
+// let cartdata = JSON.parse(localStorage.getItem("cartdata")) || [];
 
 const CardDetail = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,7 +43,7 @@ const CardDetail = () => {
   const [password, setPassword] = useState("");
   const [register2, setRegister2] = useState("");
   const [password2, setPassword2] = useState("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const toast = useToast();
   // const navigate = useNavigate();
 
@@ -75,11 +75,15 @@ const CardDetail = () => {
       <div>
         <Button
           ref={btnRef}
+          fontSize={"1rem"}
+          fontWeight={"400"}
+          borderRadius={"0%"}
+        
           border={"1px solid #1d2b4f"}
           _hover={{ bg: "#1d2b4f", color: "white" }}
           onClick={onOpen}
         >
-          Go to Payment Page ➡️
+          Go to Payment Page
         </Button>
         <Drawer
           isOpen={isOpen}
@@ -219,11 +223,11 @@ const CardDetail = () => {
                               onClick={handleSubmit}
                               border={"1px solid orange"}
                               isDisabled={
-                                cardNumber == "" ||
-                                cardname == "" ||
-                                month == "" ||
-                                year == "" ||
-                                cvv == ""
+                                cardNumber === "" ||
+                                cardname === "" ||
+                                month === "" ||
+                                year === "" ||
+                                cvv === ""
                               }
                             >
                               Place Order
