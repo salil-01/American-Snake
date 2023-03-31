@@ -17,6 +17,8 @@ import { AllProducts } from "../components/AdminSide/pages/Allproducts"
 import { EditProduct } from "../components/AdminSide/pages/EditProduct"
 import { AllUsers } from "../components/AdminSide/pages/AllUsers"
 import { AllOrders } from "../components/AdminSide/pages/AllOrders"
+import { Bag } from "./Bag"
+
 
 
 
@@ -64,7 +66,7 @@ export const MainRoutes = ()=>{
             {/* <Route path="/logi */}
             
             <Route path="/login" element={<Login/>}/>
-
+            <Route path="/bag" element = {<Bag/>} />
         </Routes>
         </>
     )
