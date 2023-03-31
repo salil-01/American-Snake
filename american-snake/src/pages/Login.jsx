@@ -1,126 +1,264 @@
-import React from "react";
-import styled from "styled-components";
 import {
   Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  InputGroup,
+  InputRightElement,
   Stack,
-  Heading,
+  Button,
+  Text,
   useColorModeValue,
+  Center,
+  Image,
+  useToast,
+  HStack,
 } from "@chakra-ui/react";
-import Footer from "../components/Homepage/Footer";
+import { useState, useReducer } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../redux/auth/action";
+import Signup from "./Signup";
+// import TopNavBar from "../components/Navbar/TopNavabr";
+// import Signup from "./SignUp";
 
-const Login = () => {
-  const [loginUser, setLoginUser] = React.useState({
-    email: "",
-    password: "",
-  });
-
-  const verifyLogin = async (e) => {
-    e.preventDefault();
-    try {
-      let usersData = await fetch(
-        `https://american-eagle-mock-server.onrender.com/user`
-      );
-      let data = await usersData.json();
-      for (let i = 0; i <= data.length - 1; i++) {
-        if (
-          loginUser.email === data[i].email &&
-          loginUser.password === data[i].password
-        ) {
-          alert(`Welcome Back ${data[i].name}`);
-          return;
-        }
-      }
-      alert("Login Error");
-    } catch (error) {
-      console.log("error ", error);
+function validateData(data, { email, password }) {
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].email == email && data[i].password == password) {
+      return true;
+    } else {
+      return false;
     }
-    setLoginUser({
-      email: "",
-      password: "",
-    });
+  }
+}
+const initialState = {
+  email: "",
+  password: "",
+};
+const reducer = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case "email": {
+      return {
+        ...state,
+        email: payload,
+      };
+    }
+    case "password": {
+      return {
+        ...state,
+        password: payload,
+      };
+    }
+    case "reset": {
+      return initialState;
+    }
+    default:
+      return state;
+  }
+};
+export const Login = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const [isLoading, setIsLoading] = useState(false);
+  // const {email,password} = state;
+  const [showPassword, setShowPassword] = useState(false);
+  const toast = useToast();
+  const navigate = useNavigate();
+  const dispatcher = useDispatch();
+  const authData = useSelector((store) => {
+    return store.AuthReducer;
+  });
+  console.log(authData);
+
+  //handling submit event
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(email,password)
+    setIsLoading(true);
+    fetch("https://firstcry-mockserver.onrender.com/user")
+      .then((res) => res.json())
+      .then((data) => {
+        if (validateData(data, state)) {
+          // login();
+          // console.log(isAuth)
+          dispatcher(login);
+          toast({
+            position: "top",
+            title: `Login successfull`,
+            status: "success",
+            isClosable: true,
+          });
+          navigate("/");
+        } else {
+          toast({
+            position: "top",
+            title: `Wrong Credentials`,
+            status: "error",
+            isClosable: true,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast({
+          position: "top",
+          title: `Wrong Credentials`,
+          status: "error",
+          isClosable: true,
+        });
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
+  const style = {
+    height: "30px",
+    marginBottom: "20px",
+    borderColor: "rgb(255,112,67)",
+    borderTop: "none",
+    borderLeft: "none",
+    borderRight: "none",
+    borderWidth: "1.5px",
+    borderRadius: "0px",
+  };
   return (
-    <Flex
-      minH={"100vh"}
-      align={"center"}
-      justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}
-      direction="column"
-    >
-      <Stack align={"center"}>
-        <Heading fontSize={"4xl"}>Login to your account</Heading>
-      </Stack>
-      <DIV>
-        <form onSubmit={verifyLogin}>
-          <p>
-            <b>Email Address</b>
-          </p>
-          <input
-            onChange={(e) =>
-              setLoginUser({ ...loginUser, email: e.target.value })
-            }
-            required
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            value= {loginUser.email}
+    <>
+      {/* <TopNavBar /> */}
+      <Flex
+        // height={"80vh"}
+        align={"center"}
+        justify={"center"}
+        bg={"rgb(239,238,241)"}
+
+        // border={"1px solid"}
+      >
+        <Stack
+          spacing={8}
+          mx={"auto"}
+          maxW={"lg"}
+          py={12}
+          px={6}
+          boxShadow={"2xl"}
+          bg={"white"}
+          borderRadius={"8px"}
+          marginTop={"20px"}
+        >
+          <Image
+            cursor={"pointer"}
+            src="american-eagle.png"
+            // width="100px"
+            // height="100px"
+            margin="auto"
+            onClick={() => navigate("/")}
           />
-          <br />
-          <br />
-          <p>
-            <b>Password</b>
-          </p>
-          <input
-            onChange={(e) =>
-              setLoginUser({ ...loginUser, password: e.target.value })
-            }
-            required
-            type="password"
-            name="password"
-            placeholder="Enter your Password"
-            value= {loginUser.password}
-          />
-          <br />
-          <br />
-          <button onSubmit="submit">Submit now</button>
-        </form>
-      </DIV>
-      <Footer/>
-    </Flex>
+          <Center>
+            <Text fontSize={"1.2rem"} fontWeight={"bold"}>
+              Login Here
+            </Text>
+          </Center>
+
+          <Box
+            rounded={"lg"}
+            bg={useColorModeValue("white")}
+            p={6}
+            margin={"auto"}
+          >
+            <Stack
+              spacing={2}
+              width={{ sm: "250px", md: "280px", lg: "330px" }}
+              margin={"auto"}
+            >
+              <FormControl id="email" isRequired>
+                <FormLabel>Email address</FormLabel>
+                <Input
+                  isRequired
+                  value={state.email}
+                  onChange={(e) =>
+                    dispatch({ type: "email", payload: e.target.value })
+                  }
+                  focusBorderColor="white"
+                  style={style}
+                  type="email"
+                  placeholder="Enter your email address"
+                />
+              </FormControl>
+              <FormControl id="password" isRequired>
+                <FormLabel>Password</FormLabel>
+                <InputGroup>
+                  <Input
+                    isRequired
+                    value={state.password}
+                    onChange={(e) =>
+                      dispatch({ type: "password", payload: e.target.value })
+                    }
+                    focusBorderColor="white"
+                    style={style}
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Enter your password"
+                  />
+                  <InputRightElement h={"full"}>
+                    <Button
+                      marginBottom="15px"
+                      variant={"ghost"}
+                      onClick={() =>
+                        setShowPassword((showPassword) => !showPassword)
+                      }
+                    >
+                      {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
+              </FormControl>
+              <Stack spacing={10} pt={2}>
+                {isLoading ? (
+                  <Button
+                    isLoading
+                    loadingText="Logging In"
+                    size="lg"
+                    bg={"#1D2B4F"}
+                    color={"white"}
+                    borderRadius="5px"
+                    _hover={{
+                      bg: "#1D2B4F",
+                    }}
+                  >
+                    Login
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={handleSubmit}
+                    size="lg"
+                    color={"#1D2B4F"}
+                    borderRadius="5px"
+                    _hover={{
+                      bg: "#1D2B4F",
+                      color: "white",
+                    }}
+                  >
+                    Login
+                  </Button>
+                )}
+              </Stack>
+
+              <HStack spacing={["0", "0", "-1", "-3", "-3"]} pt={"4"}>
+                <Text
+                  as={"span"}
+                  align={"center"}
+                  marginLeft={["10px", "10px", "11px", "15px", "50px"]}
+                >
+                  New to American-Snake?
+                </Text>
+                <Box>
+                  <Signup />
+                </Box>
+              </HStack>
+            </Stack>
+          </Box>
+        </Stack>
+      </Flex>
+    </>
   );
 };
-
-export default Login;
-
-const DIV = styled.div`
-  width: 400px;
-  padding: 30px;
-  margin: 40px auto;
-  align-items: center;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-  input {
-    width: 300px;
-    height: 40px;
-    font-size: 15px;
-    border: 1px solid grey;
-    border-radius: 7px;
-    padding: 5px;
-  }
-
-  button {
-    width: 150px;
-    height: 40px;
-    font-size: large;
-    align-items: center;
-    border-radius: 7px;
-    border: 1px solid white;
-    background-color: #cfd8dc;
-  }
-
-  button: hover {
-    background-color: blue;
-  }
-`;
