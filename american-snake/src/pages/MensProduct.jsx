@@ -1,6 +1,8 @@
 import { Box, Flex, Image, Spacer } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Footer from "../components/Homepage/Footer";
+import Navbar from "../components/Homepage/Navbar";
 // import Footer from "../Components/Footer";
 import { Filter } from "../components/ProductPage/Filter";
 import { Products } from "../components/ProductPage/Products";
@@ -12,17 +14,17 @@ export const MensProduct = () => {
   const dispatch = useDispatch();
   const [sort, setSort] = useState([]);
   const categories = [
-    "Earrings",
-    "Rings",
-    "Necklaces",
-    "Pendants",
-    "Bracelets",
-    "Mangalsutra",
+    "Jeans",
+    "Shirt",
+    "Short",
+    "Shoes",
+    "T-shirt",
+    "Dress",
   ];
   const prices= [
-    'Under ₹50,000',
-    '₹50,000 - ₹1,00,000',
-    'Over ₹1,00,000'
+    'Under ₹1,000',
+    '₹1000 - ₹4000',
+    'Over ₹4000'
   ]
   const { mensProduct } = useSelector((store) => store.ProductReducer);
   const [prodType, setProdType] = useState({
@@ -36,7 +38,7 @@ export const MensProduct = () => {
 
       if (e.target.checked) {
         filters.add(e.target._wrapperState.initialValue);
-        // setSort([...sort,e.target._wrapperState.initialValue])
+        setSort([...sort,e.target._wrapperState.initialValue])
       } else {
         filters.delete(e.target._wrapperState.initialValue);
       }
@@ -84,7 +86,7 @@ export const MensProduct = () => {
   return (
     <Box>
       <Box>
-        {/* <Navbar /> */}
+        <Navbar />
       </Box>
       <Box pt={"110px"}>
         <Box>
@@ -130,7 +132,7 @@ export const MensProduct = () => {
           </Box>
         </Flex>
       </Box>
-      {/* <Footer /> */}
+      <Footer />
     </Box>
   );
 };
