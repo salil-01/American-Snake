@@ -5,13 +5,14 @@ import { Dashboard } from "../components/AdminSide/pages/Dashboard";
 import { Homepage } from "../components/Homepage/Homepage";
 import  SingleProduct from "./SingleProduct";
 import AdminPage from "./Adminpage";
-
-import { MensProduct } from "./MensProduct";
-
-import Login from "./Login";
-
-import Signup from "./Signup";
-
+import {MensProduct} from "./MensProduct"
+import Login from "./Login"
+import Signup from "./Signup"
+import { AllProducts } from "../components/AdminSide/pages/Allproducts"
+import { EditProduct } from "../components/AdminSide/pages/EditProduct"
+import { AllUsers } from "../components/AdminSide/pages/AllUsers"
+import { AllOrders } from "../components/AdminSide/pages/AllOrders"
+import { Bag } from "./Bag"
 import Cartpage from "./Cartpage"
 
 export const MainRoutes = ()=>{
@@ -19,9 +20,6 @@ export const MainRoutes = ()=>{
         <>
         <Routes>
             <Route path="/" element={<Homepage/>}/>
-
-            
-    
             <Route path="/admin-dashboard" element={
                 <Sidebar>
                     <Dashboard/>
@@ -32,10 +30,26 @@ export const MainRoutes = ()=>{
                     <AddProduct/>
                 </Sidebar>
             }/>
-
-            <Route path="/admin" element={<Dashboard/>}/>
-
-         
+            <Route path="/admin-products" element={
+                <Sidebar>
+                    <AllProducts/>
+                </Sidebar>
+            }/>
+             <Route path="/admin-editproduct/:id" element={
+                <Sidebar>
+                    <EditProduct/>
+                </Sidebar>
+            }/>
+         <Route path="/admin-users" element={
+                <Sidebar>
+                    <AllUsers/>
+                </Sidebar>
+            }/>
+            <Route path="/admin-orders" element={
+                <Sidebar>
+                    <AllOrders/>
+                </Sidebar>
+            }/>
             <Route path="/signup" element={<Signup/>}/>
 
 
@@ -45,7 +59,11 @@ export const MainRoutes = ()=>{
             
             <Route path="/login" element={<Login/>}/>
 
+            <Route path="/bag" element = {<Bag/>} />
+
+
             <Route path="/cart" element={<Cartpage/>}/>
+
 
         </Routes>
 
