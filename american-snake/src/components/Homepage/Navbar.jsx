@@ -18,7 +18,7 @@ import {
     HStack,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import logo from "../../Assets/american-eagle.png";
+import logo from "../../Assets/americanSnake.png";
 import { CiHeart, CiSearch } from "react-icons/ci";
 import { IoBagOutline, IoPersonOutline } from "react-icons/io5";
 import { useState } from "react";
@@ -35,7 +35,7 @@ export default function Navbar() {
     };
 
     return (
-        <Box position={"sticky"} top={0} zIndex={'overlay'}>
+        <Box position={"sticky"} top={0} zIndex={"overlay"}>
             <Flex
                 bg={useColorModeValue("white", "gray.800")}
                 color={useColorModeValue("gray.600", "white")}
@@ -73,7 +73,7 @@ export default function Navbar() {
                     // border="1px solid red"
                     alignItems={"center"}
                 >
-                    <Text
+                    {/* <Text
                         textAlign={useBreakpointValue({
                             base: "center",
                             md: "left",
@@ -81,8 +81,17 @@ export default function Navbar() {
                         fontFamily={"heading"}
                         color={useColorModeValue("gray.800", "white")}
                     >
-                        <Image src={logo} w={{ lg: "240px", base: "none" }} />
-                    </Text>
+                        <Image src={logo} w={{ lg: "240px", base: "100%" }} />
+                    </Text> */}
+
+                    <Box
+                        textAlign={useBreakpointValue({
+                            base: "center",
+                            md: "left",
+                        })}
+                    >
+                        <Link href="/"><Image src={logo} w={{ lg: "240px", base: "100%" }} /></Link>
+                    </Box>
                     <Box w="100%">
                         <Flex display={{ base: "none", md: "flex" }}>
                             <Box margin="auto">

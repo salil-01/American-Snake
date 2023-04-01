@@ -7,12 +7,16 @@ import {
     HStack,
     Heading,
     Image,
+    Input,
     Link,
+    ListItem,
     Select,
     Stack,
     Text,
+    UnorderedList,
 } from "@chakra-ui/react";
 import axios from "axios";
+
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -20,7 +24,12 @@ import {
     faPlus,
     faRulerHorizontal,
 } from "@fortawesome/free-solid-svg-icons";
+import { IoHeartOutline } from "react-icons/io5";
 import { useParams } from "react-router-dom";
+import { RiFacebookFill, RiTwitterFill } from "react-icons/ri";
+import { ProductCarousel } from "../components/Homepage/ProductCarousel";
+import Navbar from "../components/Homepage/Navbar";
+import Footer from "../components/Homepage/Footer";
 
 const SingleProduct = () => {
     const { id } = useParams();
@@ -50,6 +59,9 @@ const SingleProduct = () => {
 
     return (
         <>
+            {/* Navbar */}
+            <Navbar />
+
             {/* BreachCrums */}
             <Box
                 h={"40px"}
@@ -88,14 +100,17 @@ const SingleProduct = () => {
             {/* Product section */}
             <Box
                 w={"97%"}
-                border={"1px solid black"}
+                margin={"auto"}
+                // border={"1px solid black"}
                 display={"flex"}
                 flexDirection={{ lg: "row", base: "column", md: "column" }}
+                justifyContent={"center"}
+                padding={"20px"}
             >
                 {/* Image section */}
                 <Box
-                    w={"540px"}
-                    border={"1px dashed black"}
+                    w={{ lg: "540px", base: "none" }}
+                    // border={"1px dashed black"}
                     padding={"15px"}
                     // h={"668px"}
                 >
@@ -105,7 +120,7 @@ const SingleProduct = () => {
                             <Stack spacing={3}>
                                 <Box
                                     w={"54px"}
-                                    h={"69px"}
+                                    // h={"69px"}
                                     border={"1px solid gray"}
                                     padding={"2px"}
                                 >
@@ -118,7 +133,10 @@ const SingleProduct = () => {
                         </Box>
                         {/* Main Image Section */}
                         <Box>
-                            <Image src={image_front} />
+                            <Image
+                                w={{ lg: "100%", base: "70%" }}
+                                src={image_front}
+                            />
                         </Box>
                     </Stack>
                 </Box>
@@ -127,7 +145,7 @@ const SingleProduct = () => {
                 <Box
                     w={{ lg: "426px" }}
                     padding={"35px 50px 0 50px"}
-                    border={"1px dashed red"}
+                    // border={"1px dashed red"}
                 >
                     <Stack>
                         <Heading
@@ -188,11 +206,15 @@ const SingleProduct = () => {
                             </Text>
                         </Box>
                         <Box>
-                            <Stack direction={"row"}>
+                            <Stack
+                                direction={"row"}
+                                justifyContent={{ base: "space-between" }}
+                            >
                                 <Select
                                     placeholder="Size"
                                     borderRadius={0}
-                                    w={{ lg: "222px", base: "none" }}
+                                    fontSize={"12px"}
+                                    w={{ lg: "222px", base: "250px" }}
                                 >
                                     <option value="m">M</option>
                                     <option value="l">L</option>
@@ -236,29 +258,173 @@ const SingleProduct = () => {
                             This size is available online only.
                         </Text>
                         <Box>
-                            <HStack>
+                            <HStack justifyContent={{ base: "space-between" }}>
                                 <Button
                                     bgColor={"black"}
                                     color={"white"}
                                     borderRadius={0}
                                     fontSize={"13px"}
-                                    w={{ lg: "252px" }}
-                                    h={{ lg: "50px" }}
+                                    w={{ lg: "252px", base: "252px" }}
+                                    h={{ lg: "50px", base: "50px" }}
                                     _hover={"none"}
                                 >
                                     ADD TO BAG
                                 </Button>
                                 <Button
+                                    variant="ghost"
                                     w={{ lg: "64px" }}
-                                    h={{ lg: "50px" }}
+                                    h={{ lg: "50px", base: "50px" }}
                                     borderRadius={0}
                                     border={"2px solid black"}
-                                ></Button>
+                                >
+                                    <IoHeartOutline size={"25px"} />
+                                </Button>
+                            </HStack>
+                        </Box>
+                        <Link
+                            fontSize={"11px"}
+                            textAlign={"left"}
+                            textDecor={"underline"}
+                        >
+                            Return Policy
+                        </Link>
+                        <Box>
+                            <HStack justifyContent={{ base: "space-between" }}>
+                                <Input
+                                    type="text"
+                                    w={{ lg: "252px", base: "252px" }}
+                                    h={{ lg: "50px", base: "50px" }}
+                                    borderRadius={0}
+                                    placeholder="Enter Delivery Pin Code"
+                                    fontSize={"12px"}
+                                />
+                                <Button
+                                    variant="ghost"
+                                    w={{ lg: "64px" }}
+                                    h={{ lg: "50px", base: "50px" }}
+                                    borderRadius={0}
+                                    border={"2px solid black"}
+                                    fontSize={"12px"}
+                                >
+                                    CHECK
+                                </Button>
                             </HStack>
                         </Box>
                     </Stack>
                 </Box>
             </Box>
+
+            {/* Product Details */}
+            <HStack
+                display={"flex"}
+                flexDirection={{ lg: "row", base: "column", md: "column" }}
+                alignItems={"stretch"}
+                w={"70%"}
+                margin={"auto"}
+                justifyContent={"space-evenly"}
+                padding={"20px 10px"}
+            >
+                <Box padding={"2px"}>
+                    <Stack>
+                        <Box textAlign={"left"} padding={"10px 2px"}>
+                            <Text fontSize={"12px"} fontWeight={"bold"}>
+                                Materials & Care
+                            </Text>
+                            <Box h={2}></Box>
+                            <UnorderedList
+                                fontSize={"11px"}
+                                marginLeft={"15px"}
+                                spacing={2}
+                            >
+                                <ListItem>100% Cotton</ListItem>
+                                <ListItem>Machine wash</ListItem>
+                            </UnorderedList>
+                        </Box>
+
+                        <Box textAlign={"left"} padding={"10px 2px"}>
+                            <Text fontSize={"12px"} fontWeight={"bold"}>
+                                The Details
+                            </Text>
+                            <Box h={2}></Box>
+                            <Box>
+                                <Text fontSize={"12px"}>
+                                    The one, the only, the legend: comfort never
+                                    goes out of style.
+                                </Text>
+                            </Box>
+                            <Box h={2}></Box>
+                            <UnorderedList
+                                fontSize={"11px"}
+                                marginLeft={"15px"}
+                                spacing={2}
+                            >
+                                <ListItem>
+                                    Style: WEA0172711700 | Color: Yellow
+                                </ListItem>
+                                <ListItem>
+                                    Model Size:Tommy is 6' 2"(1.88 m), wearing
+                                    size medium
+                                </ListItem>
+                            </UnorderedList>
+                        </Box>
+                    </Stack>
+                </Box>
+
+                <Box padding={"2px"}>
+                    <Stack>
+                        <Box textAlign={"left"} padding={"10px 2px"}>
+                            <Text fontSize={"12px"} fontWeight={"bold"}>
+                                Size & Fit
+                            </Text>
+                            <Box h={2}></Box>
+                            <UnorderedList
+                                fontSize={"11px"}
+                                marginLeft={"15px"}
+                                spacing={2}
+                            >
+                                <ListItem>Standard fit</ListItem>
+                            </UnorderedList>
+                        </Box>
+
+                        <Text
+                            fontSize={"12px"}
+                            fontWeight={"bold"}
+                            textAlign={"left"}
+                        >
+                            Need Help Finding Your Size?
+                        </Text>
+
+                        <Box textAlign={"left"} padding={"10px 2px"}>
+                            <Stack spacing={2}>
+                                <HStack>
+                                    <FontAwesomeIcon icon={faRulerHorizontal} />
+                                    <Text fontSize={"12px"} fontWeight={"bold"}>
+                                        Size Chart
+                                    </Text>
+                                </HStack>
+                                <HStack>
+                                    <Text fontSize={"12px"} fontWeight={"bold"}>
+                                        Product Disclosure
+                                    </Text>
+                                    <FontAwesomeIcon icon={faPlus} />
+                                </HStack>
+                                <HStack>
+                                    <RiFacebookFill />
+                                    <RiTwitterFill />
+                                </HStack>
+                            </Stack>
+                        </Box>
+                    </Stack>
+                </Box>
+            </HStack>
+
+            {/* Product Carousel */}
+            <Box margin={"30px 15px"}>
+                <ProductCarousel />
+            </Box>
+
+            {/* Footer */}
+            <Footer />
         </>
     );
 };
