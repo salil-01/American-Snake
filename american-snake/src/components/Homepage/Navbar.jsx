@@ -1,4 +1,5 @@
 import {
+
   Box,
   Flex,
   Text,
@@ -15,6 +16,11 @@ import {
   Image,
   Input,
   HStack,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem
+
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import logo from "../../Assets/americanSnake.png";
@@ -70,6 +76,7 @@ export default function Navbar() {
           alignItems={"center"}
         >
           {/* <Text
+
                         textAlign={useBreakpointValue({
                             base: "center",
                             md: "left",
@@ -80,21 +87,120 @@ export default function Navbar() {
                         <Image src={logo} w={{ lg: "240px", base: "100%" }} />
                     </Text> */}
 
-          <Box
-            textAlign={useBreakpointValue({
-              base: "center",
-              md: "left",
-            })}
-          >
-            <Link to="/">
-              <Image src={logo} w={{ lg: "240px", base: "100%" }} />
-            </Link>
-          </Box>
-          <Box w="100%">
-            <Flex display={{ base: "none", md: "flex" }}>
-              <Box margin="auto">
-                <DesktopNav />
-              </Box>
+
+                    <Box
+                        textAlign={useBreakpointValue({
+                            base: "center",
+                            md: "left",
+                        })}
+                    >
+                        <Link href="/">
+                            <Image
+                                src={logo}
+                                w={{ lg: "240px", base: "100%" }}
+                            />
+                        </Link>
+                    </Box>
+                    <Box w="100%">
+                        <Flex display={{ base: "none", md: "flex" }}>
+                            <Box margin="auto">
+                                <DesktopNav />
+                            </Box>
+                        </Flex>
+                    </Box>
+                </Flex>
+
+                <Stack
+                    flex={{ base: 1, md: 0 }}
+                    justify={"flex-end"}
+                    direction={"row"}
+                    spacing={4}
+                >
+                    {show === true ? (
+                        <Box>
+                            <Input
+                                w={{ lg: "116px", base: "none" }}
+                                h={"29px"}
+                                borderRadius={0}
+                                type="text"
+                                placeholder="search"
+                            />
+                        </Box>
+                    ) : (
+                        " "
+                    )}
+                    <Box
+                        w={"30px"}
+                        h={"30px"}
+                        // border={"1px solid black"}
+                        _hover={{ cursor: "pointer" }}
+                        onClick={handleSearchClick}
+                    >
+                        <Link href={"#"}>
+                            <CiSearch size={"28px"} />
+                        </Link>
+                    </Box>
+                    <Box
+                        w={"30px"}
+                        h={"30px"}
+                        // border={"1px solid black"}
+                        _hover={{ cursor: "pointer" }}
+                    >
+                        <HStack>
+                            <Link href={"#"}>
+                                <CiHeart size={"28px"} />
+                            </Link>
+                            <span
+                                style={{
+                                    marginTop: "-30px",
+                                    marginLeft: "-5px",
+                                    display: "float",
+                                }}
+                            >
+                                {wishListCount}
+                            </span>
+                        </HStack>
+                    </Box>
+                    <Box
+                        w={"30px"}
+                        h={"30px"}
+                        // border={"1px solid black"}
+                        _hover={{ cursor: "pointer" }}
+                    >
+                        <HStack>
+                            <Link href={"#"}>
+                                <IoBagOutline size={"27px"} />
+                            </Link>
+                            <span
+                                style={{
+                                    marginTop: "-30px",
+                                    marginLeft: "-5px",
+                                    display: "float",
+                                }}
+                            >
+                                {bagCount}
+                            </span>
+                        </HStack>
+                    </Box>
+                    <Box
+                        w={"30px"}
+                        h={"30px"}
+                        // border={"1px solid black"}
+                        _hover={{ cursor: "pointer" }}
+                    >
+                        <Menu>
+                            <MenuButton>
+                                <IoPersonOutline size={"27px"} />
+                            </MenuButton>
+                            <MenuList>
+                                <MenuItem>Login</MenuItem>
+                                <MenuItem>Sign Up</MenuItem>
+                                <MenuItem>Admin</MenuItem>
+                            </MenuList>
+                        </Menu>
+                    </Box>
+                </Stack>
+
             </Flex>
           </Box>
         </Flex>
