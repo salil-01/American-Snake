@@ -76,11 +76,11 @@ export const AllProducts = () => {
                   <Text color="gray">Brand : {el.brand}</Text>
                   <Text color="gray">
                     Category :{" "}
-                    {el.type.charAt(0).toUpperCase() + el.type.slice(1)}
+                    {el.type}
                   </Text>
                   <Text color="gray">
                     Gender :{" "}
-                    {el.category.charAt(0).toUpperCase() + el.category.slice(1)}
+                    {el.category==="mens"?"Men":"Women"}
                   </Text>
                   <Text color="gray">MRP : ₹{el.price}</Text>
 

@@ -26,6 +26,7 @@ import {
 // import { useNavigate } from "react-router-dom";
 import { useState, } from "react";
 import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 // let cartdata = JSON.parse(localStorage.getItem("cartdata")) || [];
 
 const CardDetail = () => {
@@ -43,10 +44,18 @@ const CardDetail = () => {
   const [password, setPassword] = useState("");
   const [register2, setRegister2] = useState("");
   const [password2, setPassword2] = useState("");
+  const dispatch = useDispatch();
+  const bagData = useSelector((store)=>{
+    return  store.BagReducer.bag;
+  })
+  const addressData = useSelector((store)=>{
+    return  store.BagReducer.address;
+  })
+  // console.log(addressData,bagData)
   // const navigate = useNavigate();
   const toast = useToast();
   // const navigate = useNavigate();
-
+  
   const handleSubmit = () => {
     toast({
       position: "top",
@@ -63,11 +72,19 @@ const CardDetail = () => {
         duration: 9000,
         isClosable: true,
       });
-    //   setCartCount(0);
-    //   setcartData([]);
-    //   let updatedData = [];
-    //   localStorage.setItem("cartdata", JSON.stringify(updatedData));
-    //   navigate("/");
+      let orderData = {
+        products:[...bagData],
+        address:{
+          ...addressData
+        }
+      }
+      console.log(orderData);
+      // axios.post()
+      // setCartCount(0);
+      // setcartData([]);
+      // let updatedData = [];
+      // localStorage.setItem("cartdata", JSON.stringify(updatedData));
+      // navigate("/");
     }, 3000);
   };
   return (
