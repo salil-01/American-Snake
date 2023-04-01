@@ -4,30 +4,28 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Flex,
-  Image,
   Spacer,
   Text,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
-import Footer from "../components/Homepage/Footer";
 import Navbar from "../components/Homepage/Navbar";
-// import Footer from "../Components/Footer";
-import { Filter } from "../components/MenProductPage/Filter";
-import Pagination from "../components/MenProductPage/Pagination";
-import { Products } from "../components/MenProductPage/Products";
-import { Sortbybar } from "../components/MenProductPage/Sortbybar";
-import { getMenProduct } from "../redux/product/productAction";
+import { getWomenProduct } from "../redux/product/productAction";
+import { Sortbybar } from "../components/WomenProductPage/Sortbybar";
+import { Filter } from "../components/WomenProductPage/Filter";
+import Pagination from "../components/WomenProductPage/Pagination";
+import Footer from "../components/Homepage/Footer";
+import { Products } from "../components/WomenProductPage/Products";
 
-export const MensProduct = () => {
+export const WomensProduct = () => {
   const dispatch = useDispatch();
   const [searchParam] = useSearchParams();
   const location = useLocation();
   const productData = useSelector((store) => {
-    return store.ProductReducer.mensProduct;
+    return store.ProductReducer.womensProduct;
   });
-  // console.log(productData);
+  console.log(productData);
   const obj = {
     params: {
       _limit: searchParam.get("page") && 9,
@@ -39,7 +37,7 @@ export const MensProduct = () => {
     },
   };
   useEffect(() => {
-    dispatch(getMenProduct(obj));
+    dispatch(getWomenProduct(obj));
   }, [location.search]);
 
   return (
@@ -63,7 +61,7 @@ export const MensProduct = () => {
             </BreadcrumbItem>
             <BreadcrumbItem>
               <BreadcrumbLink as={Link} to="#">
-                <Text fontSize={"12px"}>Men</Text>
+                <Text fontSize={"12px"}>Women</Text>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>

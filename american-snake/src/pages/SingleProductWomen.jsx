@@ -31,16 +31,17 @@ import { ProductCarousel } from "../components/Homepage/ProductCarousel";
 import Navbar from "../components/Homepage/Navbar";
 import Footer from "../components/Homepage/Footer";
 
-const SingleProduct = () => {
+export const SingleProductWomen = () => {
     const { id } = useParams();
+    // console.log("this line",id);
     const [productItem, setProductItem] = useState([]);
     const [qtyCount, setQtyCount] = useState(1);
 
     useEffect(() => {
         axios
-            .get(`https://american-eagle-mock-server.onrender.com/men/${id}`)
+            .get(`https://american-eagle-mock-server.onrender.com/women/${id}`)
             .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 setProductItem(res.data);
             });
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -428,5 +429,3 @@ const SingleProduct = () => {
         </>
     );
 };
-
-export default SingleProduct;

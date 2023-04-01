@@ -1,8 +1,10 @@
 import { SingleProdCard } from "./SingleProdCard";
 import { useSelector } from "react-redux";
 import { Grid } from "@chakra-ui/react";
+import { useSearchParams } from "react-router-dom";
 
-export const Products = ({ prod }) => {
+export const Products = ({prod}) => {
+  // console.log(props)
   const { isLoading } = useSelector((store) => store.ProductReducer);
 
   return (
@@ -16,7 +18,7 @@ export const Products = ({ prod }) => {
             lg: "repeat(3, 1fr)",
           }}
         >
-          {prod.map((el) => {
+          {prod?.map((el) => {
             return <SingleProdCard key={el.id} {...el} />;
           })}
         </Grid>
