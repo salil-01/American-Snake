@@ -14,12 +14,15 @@ import { AllOrders } from "../components/AdminSide/pages/AllOrders";
 import { Bag } from "./Bag";
 import Cartpage from "./Cartpage";
 import { Login } from "./Login";
+import { WomensProduct } from "./WomensProduct";
 
 export const MainRoutes = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Homepage />} />
+
+        {/* Admin Routes */}
         <Route
           path="/admin-dashboard"
           element={
@@ -68,16 +71,14 @@ export const MainRoutes = () => {
             </Sidebar>
           }
         />
+
+        {/* user routes */}
         <Route path="/signup" element={<Signup />} />
-
-        <Route path="/products-men" element={<MensProduct />} />
-
-        <Route path="/singleproduct/:id" element={<SingleProduct />} />
-
         <Route path="/login" element={<Login />} />
-
+        <Route path="/products-men" element={<MensProduct />} />
+        <Route path="/products-women" element={<WomensProduct />} />
+        <Route path="/singleproduct/:id" element={<SingleProduct />} />
         <Route path="/bag" element={<Bag />} />
-
         <Route path="/cart" element={<Cartpage />} />
       </Routes>
     </>

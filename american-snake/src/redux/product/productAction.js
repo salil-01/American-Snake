@@ -9,7 +9,7 @@ import axios from "axios";
 export const getMenProduct = (params) => async (dispatch) => {
   dispatch({ type: GET_PRODUCT_LOADING });
   await axios
-    .get("https://american-eagle-mock-server.onrender.com/men",params)
+    .get("https://american-eagle-mock-server.onrender.com/men", params)
     .then((res) => {
       dispatch({ type: GET_MEN_PRODUCT_SUCCESS, payload: res.data });
     })
@@ -18,11 +18,12 @@ export const getMenProduct = (params) => async (dispatch) => {
     });
 };
 
-export const getWomenProduct = (paramObj) => async (dispatch) => {
+export const getWomenProduct = (params) => async (dispatch) => {
   dispatch({ type: GET_PRODUCT_LOADING });
-  return await axios
-    .get("https://american-eagle-mock-server.onrender.com/women", paramObj)
+  await axios
+    .get("https://american-eagle-mock-server.onrender.com/women", params)
     .then((res) => {
+      console.log(res);
       dispatch({ type: GET_WOMEN_PRODUCT_SUCCESS, payload: res.data });
     })
     .catch((err) => {
