@@ -16,6 +16,10 @@ import {
     Image,
     Input,
     HStack,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import logo from "../../Assets/americanSnake.png";
@@ -35,7 +39,7 @@ export default function Navbar() {
     };
 
     return (
-        <Box position={"sticky"}  top={0} zIndex={"overlay"}>
+        <Box position={"sticky"} top={0} zIndex={"overlay"}>
             <Flex
                 bg={useColorModeValue("white", "gray.800")}
                 color={useColorModeValue("gray.600", "white")}
@@ -90,7 +94,12 @@ export default function Navbar() {
                             md: "left",
                         })}
                     >
-                        <Link href="/"><Image src={logo} w={{ lg: "240px", base: "100%" }} /></Link>
+                        <Link href="/">
+                            <Image
+                                src={logo}
+                                w={{ lg: "240px", base: "100%" }}
+                            />
+                        </Link>
                     </Box>
                     <Box w="100%">
                         <Flex display={{ base: "none", md: "flex" }}>
@@ -179,9 +188,16 @@ export default function Navbar() {
                         // border={"1px solid black"}
                         _hover={{ cursor: "pointer" }}
                     >
-                        <Link href={"#"}>
-                            <IoPersonOutline size={"27px"} />
-                        </Link>
+                        <Menu>
+                            <MenuButton>
+                                <IoPersonOutline size={"27px"} />
+                            </MenuButton>
+                            <MenuList>
+                                <MenuItem>Login</MenuItem>
+                                <MenuItem>Sign Up</MenuItem>
+                                <MenuItem>Admin</MenuItem>
+                            </MenuList>
+                        </Menu>
                     </Box>
                 </Stack>
             </Flex>
