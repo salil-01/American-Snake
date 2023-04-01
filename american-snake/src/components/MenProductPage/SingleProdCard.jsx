@@ -11,10 +11,10 @@ export const SingleProdCard = ({
   brand,
 }) => {
   const navigate = useNavigate();
-  // const [over, setOver] = useState(false);
+  const [over, setOver] = useState(false);
   // console.log(over)
   const handleClick = () => {
-    navigate(`/SingleProduct/${id}`);
+    navigate(`/singleproduct-men/${id}`);
   };
   return (
     <Box
@@ -27,21 +27,24 @@ export const SingleProdCard = ({
       }}
     >
       <Box p="5">
+        <Box width={"80%"} margin={"auto"} >
         <Image
           //logic for image change on hover
-          //  onMouseOver={() => setOver(true)}
-          //  onMouseOut={() => setOver(false)}
-          // src={over?image_reverse:image_front}
-          src={image_front}
+           onMouseOver={() => setOver(true)}
+           onMouseOut={() => setOver(false)}
+          src={over?image_reverse:image_front}
+          // src={image_front}
           alt={"img"}
           boxShadow="xs"
           p="1"
           rounded="md"
           bg="white"
+          width={"100%"}
         />
+        </Box>
         <br />
         <Text color={"black"} fontSize={"14px"}>
-          {title}
+          {title.substring(0,45)}
         </Text>
         <Text color={"grey"} fontSize={"14px"} mt={"5px"}>
           {brand}

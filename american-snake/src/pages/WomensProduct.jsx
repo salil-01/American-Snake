@@ -61,7 +61,7 @@ export const WomensProduct = () => {
             </BreadcrumbItem>
             <BreadcrumbItem>
               <BreadcrumbLink as={Link} to="#">
-                <Text fontSize={"12px"}>Men</Text>
+                <Text fontSize={"12px"}>Women</Text>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbItem>

@@ -14,7 +14,7 @@ export const SingleProdCard = ({
   // const [over, setOver] = useState(false);
   // console.log(over)
   const handleClick = () => {
-    navigate(`/SingleProduct/${id}`);
+    navigate(`/singleproduct-women/${id}`);
   };
   return (
     <Box
@@ -27,6 +27,7 @@ export const SingleProdCard = ({
       }}
     >
       <Box p="5">
+        <Box margin={"auto"} width={"80%"}>
         <Image
           //logic for image change on hover
           //  onMouseOver={() => setOver(true)}
@@ -39,6 +40,7 @@ export const SingleProdCard = ({
           rounded="md"
           bg="white"
         />
+        </Box>
         <br />
         <Text color={"black"} fontSize={"14px"}>
           {title}

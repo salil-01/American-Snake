@@ -3,7 +3,6 @@ import Sidebar from "../components/AdminSide/components/Sidebar";
 import { AddProduct } from "../components/AdminSide/pages/Addproduct";
 import { Dashboard } from "../components/AdminSide/pages/Dashboard";
 import { Homepage } from "../components/Homepage/Homepage";
-import SingleProduct from "./SingleProduct";
 import { MensProduct } from "./MensProduct";
 
 import Signup from "./Signup";
@@ -15,6 +14,8 @@ import { Bag } from "./Bag";
 import Cartpage from "./Cartpage";
 import { Login } from "./Login";
 import { WomensProduct } from "./WomensProduct";
+import { SingleProductWomen } from "./SingleProductWomen";
+import { SingleProductMen } from "./SingleProductMen";
 
 export const MainRoutes = () => {
   return (
@@ -77,7 +78,8 @@ export const MainRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/products-men" element={<MensProduct />} />
         <Route path="/products-women" element={<WomensProduct />} />
-        <Route path="/singleproduct/:id" element={<SingleProduct />} />
+        <Route path="/singleproduct-men/:id" element={<SingleProductMen />} />
+        <Route path="/singleproduct-women/:id" element={<SingleProductWomen />} />
         <Route path="/bag" element={<Bag />} />
         <Route path="/cart" element={<Cartpage />} />
       </Routes>
