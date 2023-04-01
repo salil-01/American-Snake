@@ -35,7 +35,7 @@ export default function Navbar() {
     };
 
     return (
-        <Box position={"sticky"} top={0} zIndex={"overlay"}>
+        <Box position={"sticky"}  top={0} zIndex={"overlay"}>
             <Flex
                 bg={useColorModeValue("white", "gray.800")}
                 color={useColorModeValue("gray.600", "white")}
