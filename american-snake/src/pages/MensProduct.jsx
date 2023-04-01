@@ -1,84 +1,77 @@
-import { Box, Flex, Image, Spacer } from "@chakra-ui/react";
+import {
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Flex,
+  Image,
+  Spacer,
+  Text,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import Footer from "../components/Homepage/Footer";
 import Navbar from "../components/Homepage/Navbar";
 // import Footer from "../Components/Footer";
 import { Filter } from "../components/MenProductPage/Filter";
+import Pagination from "../components/MenProductPage/Pagination";
 import { Products } from "../components/MenProductPage/Products";
 import { Sortbybar } from "../components/MenProductPage/Sortbybar";
-// import Navbar from "../Components/Navbar";
 import { getMenProduct } from "../redux/product/productAction";
 
 export const MensProduct = () => {
   const dispatch = useDispatch();
-  const [sort, setSort] = useState([]);
-  const categories = ["Jeans", "Shirt", "Short", "Shoes", "T-shirt", "Dress"];
-  const prices = ["Under ₹1,000", "₹1000 - ₹4000", "Over ₹4000"];
-  const { mensProduct } = useSelector((store) => store.ProductReducer);
-  const [prodType, setProdType] = useState({
-    filters: new Set(),
-    product: mensProduct,
+  const [searchParam] = useSearchParams();
+  const location = useLocation();
+  const productData = useSelector((store) => {
+    return store.ProductReducer.mensProduct;
   });
-  const onFilterChange = (e) => {
-    setProdType((previousState) => {
-      let filters = new Set(previousState.filters);
-      let product = mensProduct;
-
-      if (e.target.checked) {
-        filters.add(e.target._wrapperState.initialValue);
-        setSort([...sort, e.target._wrapperState.initialValue]);
-      } else {
-        filters.delete(e.target._wrapperState.initialValue);
-      }
-
-      if (filters.size) {
-        product = product.filter((product) => {
-          return filters.has(product.type);
-        });
-      }
-
-      return {
-        filters,
-        product,
-      };
-    });
+  // console.log(productData);
+  const obj = {
+    params: {
+      _limit: searchParam.get("page") && 9,
+      _page: searchParam.get("page"),
+      type: searchParam.getAll("category"),
+      brand: searchParam.getAll("brand"),
+      _sort: searchParam.get("order") && "price",
+      _order: searchParam.get("order"),
+    },
   };
-  const onFilterPrice = (e) => {
-    setProdType((previousState) => {
-      let filters = new Set(previousState.filters);
-      let product = mensProduct;
-      if (e.target.checked) {
-        filters.add(e.target._wrapperState.initialValue);
-      } else {
-        filters.delete(e.target._wrapperState.initialValue);
-      }
-
-      if (filters.size) {
-        product = product.filter((product) => {
-          return filters.has(product.pv);
-        });
-      }
-
-      return {
-        filters,
-        product,
-      };
-    });
-  };
-
   useEffect(() => {
-    dispatch(getMenProduct());
-    setProdType(mensProduct);
-  }, []);
+    dispatch(getMenProduct(obj));
+  }, [location.search]);
 
   return (
-    <>
+    <div>
       <Navbar />
 
-      <Box>
+      <Box width={"100%"} margin={"auto"}>
         <Box>
-          <Sortbybar sortby={sort} />
+          <Sortbybar />
+        </Box>
+        <Box
+          margin={"10px auto"}
+          width={"20%"}
+          marginLeft={{ base: "none", md: "none", lg: "120px" }}
+        >
+          <Breadcrumb>
+            <BreadcrumbItem>
+              <BreadcrumbLink as={Link} to="/">
+                <Text fontSize={"12px"}>Home</Text>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink as={Link} to="#">
+                <Text fontSize={"12px"}>Men</Text>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink as={Link} to="#">
+                <Text fontSize={"12px"}>Products</Text>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
         </Box>
         <Flex
           direction={{
@@ -97,7 +90,7 @@ export const MensProduct = () => {
             }}
             p={5}
             position={{
-              base: "sticky",
+              base: "static",
               lg: "sticky",
             }}
             top={{
@@ -105,29 +98,27 @@ export const MensProduct = () => {
               lg: "20%",
             }}
           >
-            <Filter
-              onFilterChange={onFilterChange}
-              categories={categories}
-              prices={prices}
-              onFilterPrice={onFilterPrice}
-            />
+            <Filter />
           </Box>
           <Spacer />
           <Box
+            marginTop={"20px"}
             w={{
               base: "100%",
               sm: "100%",
               md: "100%",
-              lg: "70%",
+              lg: "100%",
             }}
           >
-            <Products prod={prodType.product || mensProduct} />
+            <Products prod={productData} />
+            <Box width={"40%"} margin={"70px auto 30px"}>
+              <Pagination />
+            </Box>
           </Box>
         </Flex>
-
-        <Footer />
       </Box>
-    </>
+
+      <Footer />
+    </div>
   );
 };
-

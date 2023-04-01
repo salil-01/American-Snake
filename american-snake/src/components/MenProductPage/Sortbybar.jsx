@@ -1,9 +1,22 @@
 import { Box, Button, Flex, Select, Spacer } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
-export const Sortbybar = ({ sortby }) => {
-  const sorthandleclick = (e) => {
-    console.log(e);
+export const Sortbybar = () => {
+  const [searchParam, setSearchParam] = useSearchParams();
+  const initialOrder = searchParam.get("order");
+  const [order, setOrder] = useState(initialOrder || "");
+  const handleSort = (e) => {
+    let val = e.target.value;
+    console.log(val);
+    setOrder(val);
   };
+  useEffect(() => {
+    let params = {};
+    order && (params.order = order);
+    setSearchParam(params);
+  }, [order]);
   return (
     <Box
       position="sticky"
@@ -44,13 +57,13 @@ export const Sortbybar = ({ sortby }) => {
           <Box>
             <Select
               placeholder="Sort By : New Arrivals"
-              onClick={(e) => sorthandleclick(e)}
+              onChange={(e) => handleSort(e)}
               bg={"white"}
             >
-              <option fontSize={{ sm: "10px" }} value="lowtohigh">
+              <option fontSize={{ sm: "10px" }} value="asc">
                 Price: Low to High
               </option>
-              <option value="hightolow">Price: High to Low</option>
+              <option value="desc">Price: High to Low</option>
             </Select>
           </Box>
         </Flex>
