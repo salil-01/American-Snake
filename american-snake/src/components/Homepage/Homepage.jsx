@@ -11,7 +11,7 @@ import { ProductCarousel } from "./ProductCarousel";
 
 export const Homepage = () => {
     return (
-        <div>
+        <div >
             <Navbar />
             <Carousel />
             <Image src={bannarImg1} />

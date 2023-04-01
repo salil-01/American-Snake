@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Footer from "../components/Homepage/Footer";
 import Navbar from "../components/Homepage/Navbar";
 // import Footer from "../Components/Footer";
-import { Filter } from "../components/ProductPage/Filter";
-import { Products } from "../components/ProductPage/Products";
-import { Sortbybar } from "../components/ProductPage/Sortbybar";
+import { Filter } from "../components/MenProductPage/Filter";
+import { Products } from "../components/MenProductPage/Products";
+import { Sortbybar } from "../components/MenProductPage/Sortbybar";
 // import Navbar from "../Components/Navbar";
 import { getMenProduct } from "../redux/product/productAction";
 
