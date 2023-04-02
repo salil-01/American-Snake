@@ -163,7 +163,7 @@ export default function Navbar() {
                   display: "float",
                 }}
               >
-                {cartTotal || 0}
+                {cartTotal || ""}
               </span>
             </HStack>
           </Box>
@@ -184,7 +184,7 @@ export default function Navbar() {
                   display: "float",
                 }}
               >
-                {bagTotal || 0}
+                {bagTotal || ""}
               </span>
             </HStack>
           </Box>
