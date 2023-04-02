@@ -26,12 +26,6 @@ const Cartpage = () => {
             if (el.id === n) return el;
         });
         dispatch(addToBag(product));
-
-        // removeItem
-        // const updateData = Items.filter((el) => {
-        //     if (el.id !== n) return el;
-        // });
-        // dispatch(addToWishlist(updateData));
     };
 
     return (
