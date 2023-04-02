@@ -14,6 +14,7 @@ import {
     Stack,
     Text,
     UnorderedList,
+    useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
 
@@ -30,12 +31,21 @@ import { RiFacebookFill, RiTwitterFill } from "react-icons/ri";
 import { ProductCarousel } from "../components/Homepage/ProductCarousel";
 import Navbar from "../components/Homepage/Navbar";
 import Footer from "../components/Homepage/Footer";
+import { addToWishlist } from "../redux/bagReducer/action";
+import { useDispatch } from "react-redux";
 
 export const SingleProductWomen = () => {
     const { id } = useParams();
     // console.log("this line",id);
     const [productItem, setProductItem] = useState([]);
     const [qtyCount, setQtyCount] = useState(1);
+    const dispatch = useDispatch();
+    const toast = useToast();
+
+    const handleWishlist = () => {
+        dispatch(addToWishlist(productItem));
+        console.log("dispatch has been called");
+    };
 
     useEffect(() => {
         axios
@@ -277,6 +287,15 @@ export const SingleProductWomen = () => {
                                     h={{ lg: "50px", base: "50px" }}
                                     borderRadius={0}
                                     border={"2px solid black"}
+                                    onClick={() => {
+                                        handleWishlist();
+                                        toast({
+                                            title: "Item Added to Wishlist",
+                                            status: "success",
+                                            duration: 3000,
+                                            isClosable: true,
+                                        });
+                                    }}
                                 >
                                     <IoHeartOutline size={"25px"} />
                                 </Button>
