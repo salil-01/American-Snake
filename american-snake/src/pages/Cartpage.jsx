@@ -29,7 +29,10 @@ const Cartpage = () => {
   const btnRef = React.useRef();
   const [price, setprice] = useState(0);
   const navigate = useNavigate();
-
+  
+  const handleAddress = () =>{
+    alert("Address Saved");
+  }
   const handleProceed = () =>{
     alert("Order Placed Successfully");
     navigate("/")
@@ -123,7 +126,7 @@ const Cartpage = () => {
                       color: "white",
                     }}
                     width="200px"
-                    onClick={()=> alert("Adress Saved")} 
+                    onClick={handleAddress} 
                   >
                     Save Address
                   </Button>
