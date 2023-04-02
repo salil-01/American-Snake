@@ -32,6 +32,8 @@ import { CheckIcon } from "@chakra-ui/icons";
 import ProductPreview from "../components/Bag/ProductPreview";
 import { useDispatch } from "react-redux";
 import { addAddress } from "../redux/bagReducer/action";
+import Navbar from "../components/Homepage/Navbar";
+import Footer from "../components/Homepage/Footer";
 
 const initialData = {
   name: "",
@@ -52,14 +54,17 @@ export const Bag = () => {
   };
 
   return (
-    <div>
-      {/* <Navbar /> */}
+    <div style={{ width: "100%" }}>
+      <Navbar />
       <Stack
+        width={{ sm: "100%", md: "100%", lg: "80%" }}
+        margin={"auto"}
         direction={{ lg: "row", base: "column" }}
-        justifyContent={"center"}
+        justifyContent={"space-around"}
         spacing={9}
+        mt={"80px"}
       >
-        <Box w={"890px"}>
+        <Box w={{ bs: "100%", md: "100%", lg: "60%" }} margin={"auto"}>
           <Box>
             <Text textAlign={"left"} fontWeight={"500"}>
               1. YOUR CART
@@ -301,7 +306,7 @@ export const Bag = () => {
                     onClick={(e) => {
                       onClose();
                       e.preventDefault();
-                      dispatch(addAddress(formData))
+                      dispatch(addAddress(formData));
                       // console.log(formData);
                     }}
                   >
@@ -339,7 +344,7 @@ export const Bag = () => {
             </Flex>
           </div>
         </Box>
-        <Box w={"370px"}>
+        <Box w={{ bs: "80%", md: "80%", lg: "30%" }} margin={"auto"}>
           <div
             style={{
               padding: "15px",
@@ -435,7 +440,8 @@ export const Bag = () => {
             </Flex>
             <hr style={{ marginRight: "100px" }} />
             <Flex justifyContent={"space-between"} mt={2}>
-              <p style={{ fontSize: "14px" }}><strong>Shipping</strong>
+              <p style={{ fontSize: "14px" }}>
+                <strong>Shipping</strong>
               </p>
               <p
                 style={{
@@ -447,7 +453,7 @@ export const Bag = () => {
               </p>
               <hr />
             </Flex>
-           
+
             <Divider border={"1px solid black"} />
             <Flex justifyContent={"space-between"} mt={2}>
               <p style={{ fontSize: "14px", fontWeight: "bold" }}>
@@ -461,7 +467,7 @@ export const Bag = () => {
                   fontWeight: "bold",
                 }}
               >
-                ₹{total-79}
+                ₹{total - 79}
               </p>
               <hr />
             </Flex>
@@ -482,7 +488,7 @@ export const Bag = () => {
         </Box>
       </Stack>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

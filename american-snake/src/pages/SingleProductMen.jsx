@@ -8,7 +8,6 @@ import {
   Heading,
   Image,
   Input,
-  Link,
   ListItem,
   Select,
   Stack,
@@ -25,7 +24,7 @@ import {
   faRulerHorizontal,
 } from "@fortawesome/free-solid-svg-icons";
 import { IoHeartOutline } from "react-icons/io5";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { RiFacebookFill, RiTwitterFill } from "react-icons/ri";
 import { ProductCarousel } from "../components/Homepage/ProductCarousel";
 import Navbar from "../components/Homepage/Navbar";
@@ -38,10 +37,10 @@ export const SingleProductMen = () => {
   const [productItem, setProductItem] = useState([]);
   const [bag, setBag] = useState(false);
   const dispatch = useDispatch();
-const bagData = useSelector((store)=>{
-    return store.BagReducer.bag
-})
-console.log(bagData);
+  const bagData = useSelector((store) => {
+    return store.BagReducer.bag;
+  });
+  console.log(bagData);
   const [qtyCount, setQtyCount] = useState(1);
   const handleBag = () => {
     // console.log("bag")
@@ -66,9 +65,7 @@ console.log(bagData);
   }, []);
 
   const {
-    brand,
     category,
-    hreftag,
     image_front,
     image_reverse,
     price,
@@ -204,14 +201,14 @@ console.log(bagData);
               <HStack>
                 <FontAwesomeIcon icon={faRulerHorizontal} />
                 <Text fontSize={"11px"} textDecor={"underline"}>
-                  <Link>Size Chart</Link>
+                  <Link to={"#"}>Size Chart</Link>
                 </Text>
                 <Text
                   fontSize={"11px"}
                   fontWeight={"bold"}
                   textDecor={"underline"}
                 >
-                  <Link>Find the perfect Size now!</Link>
+                  <Link to={"#"}>Find the perfect Size now!</Link>
                 </Text>
               </HStack>
             </Box>
@@ -294,7 +291,12 @@ console.log(bagData);
                 </Button>
               </HStack>
             </Box>
-            <Link fontSize={"11px"} textAlign={"left"} textDecor={"underline"}>
+            <Link
+              to={"#"}
+              fontSize={"11px"}
+              textAlign={"left"}
+              textDecor={"underline"}
+            >
               Return Policy
             </Link>
             <Box>

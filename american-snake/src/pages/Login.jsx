@@ -16,11 +16,13 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { useState, useReducer } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/auth/action";
 import Signup from "./Signup";
+import Navbar from "../components/Homepage/Navbar";
+import Footer from "../components/Homepage/Footer";
 // import TopNavBar from "../components/Navbar/TopNavabr";
 // import Signup from "./SignUp";
 
@@ -66,11 +68,12 @@ export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatcher = useDispatch();
   const authData = useSelector((store) => {
     return store.AuthReducer;
   });
-  console.log(authData);
+  // console.log(authData);
 
   //handling submit event
   const handleSubmit = (e) => {
@@ -90,7 +93,9 @@ export const Login = () => {
             status: "success",
             isClosable: true,
           });
-          navigate("/");
+          navigate(location.state, {
+            replace: true,
+          });
         } else {
           toast({
             position: "top",
@@ -126,13 +131,14 @@ export const Login = () => {
   };
   return (
     <>
-      {/* <TopNavBar /> */}
+    <Navbar/>
       <Flex
         // height={"80vh"}
         align={"center"}
         justify={"center"}
         bg={"rgb(239,238,241)"}
-
+        paddingTop={"50px"}
+        paddingBottom={"50px"}
         // border={"1px solid"}
       >
         <Stack
@@ -259,6 +265,7 @@ export const Login = () => {
           </Box>
         </Stack>
       </Flex>
+      <Footer/>
     </>
   );
 };

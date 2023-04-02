@@ -8,7 +8,7 @@ import {
     Heading,
     Image,
     Input,
-    Link,
+    
     ListItem,
     Select,
     Stack,
@@ -25,7 +25,7 @@ import {
     faRulerHorizontal,
 } from "@fortawesome/free-solid-svg-icons";
 import { IoHeartOutline } from "react-icons/io5";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { RiFacebookFill, RiTwitterFill } from "react-icons/ri";
 import { ProductCarousel } from "../components/Homepage/ProductCarousel";
 import Navbar from "../components/Homepage/Navbar";
@@ -189,14 +189,14 @@ export const SingleProductWomen = () => {
                             <HStack>
                                 <FontAwesomeIcon icon={faRulerHorizontal} />
                                 <Text fontSize={"11px"} textDecor={"underline"}>
-                                    <Link>Size Chart</Link>
+                                    <Link to={"#"}>Size Chart</Link>
                                 </Text>
                                 <Text
                                     fontSize={"11px"}
                                     fontWeight={"bold"}
                                     textDecor={"underline"}
                                 >
-                                    <Link>Find the perfect Size now!</Link>
+                                    <Link to={"#"}>Find the perfect Size now!</Link>
                                 </Text>
                             </HStack>
                         </Box>
@@ -282,7 +282,7 @@ export const SingleProductWomen = () => {
                                 </Button>
                             </HStack>
                         </Box>
-                        <Link
+                        <Link to={"#"}
                             fontSize={"11px"}
                             textAlign={"left"}
                             textDecor={"underline"}

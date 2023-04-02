@@ -26,14 +26,23 @@ import { CiHeart, CiSearch } from "react-icons/ci";
 import { IoBagOutline, IoPersonOutline } from "react-icons/io5";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Signup from "../../pages/Signup";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
   // eslint-disable-next-line no-unused-vars
-  const [wishListCount, setWishListCount] = useState(0);
   // eslint-disable-next-line no-unused-vars
-  const [bagCount, setBagCount] = useState(0);
   const [show, setShow] = useState(false);
+  const bagTotal = useSelector((store) => {
+    return store.BagReducer.bag.length;
+  });
+  const cartTotal = useSelector((store) => {
+    return store.BagReducer.wishlist.length;
+  });
+  const auth = useSelector((store) => {
+    return store.AuthReducer.isAdminAuth;
+  });
   const handleSearchClick = () => {
     setShow((prev) => !prev);
   };
@@ -140,7 +149,7 @@ export default function Navbar() {
             _hover={{ cursor: "pointer" }}
           >
             <HStack>
-              <Link to={"#"}>
+              <Link to={"/cart"}>
                 <CiHeart size={"28px"} />
               </Link>
               <span
@@ -150,7 +159,7 @@ export default function Navbar() {
                   display: "float",
                 }}
               >
-                {wishListCount}
+                {cartTotal || 0}
               </span>
             </HStack>
           </Box>
@@ -161,7 +170,7 @@ export default function Navbar() {
             _hover={{ cursor: "pointer" }}
           >
             <HStack>
-              <Link to={"#"}>
+              <Link to={"/bag"}>
                 <IoBagOutline size={"27px"} />
               </Link>
               <span
@@ -171,7 +180,7 @@ export default function Navbar() {
                   display: "float",
                 }}
               >
-                {bagCount}
+                {bagTotal || 0}
               </span>
             </HStack>
           </Box>
@@ -186,9 +195,35 @@ export default function Navbar() {
                 <IoPersonOutline size={"27px"} />
               </MenuButton>
               <MenuList>
-                <MenuItem>Login</MenuItem>
-                <MenuItem>Sign Up</MenuItem>
-                <MenuItem>Admin</MenuItem>
+                <MenuItem>
+                  <Link to={"/login"}>
+                    <Text
+                      fontWeight={"500"}
+                      _hover={{ textDecoration: "underline" }}
+                    >
+                      Login
+                    </Text>
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Box ml={"6px"}>
+                    <Signup />
+                  </Box>
+                </MenuItem>
+                {auth ? (
+                  <MenuItem>
+                    <Link to={"/admin-dashboard"}>
+                      <Text
+                        fontWeight={"500"}
+                        _hover={{ textDecoration: "underline" }}
+                      >
+                        Admin Panel
+                      </Text>
+                    </Link>
+                  </MenuItem>
+                ) : (
+                  ""
+                )}
               </MenuList>
             </Menu>
           </Box>
@@ -229,12 +264,12 @@ const DesktopNav = () => {
               fontSize={"16px"}
               fontWeight={500}
               color={linkColor}
-              _hover={{
-                textDecoration: "none",
-                color: linkHoverColor,
-              }}
+              
             >
-              <Text fontSize={"18px"} fontWeight={500}>
+              <Text fontSize={"18px"} fontWeight={500} _hover={{
+                textDecoration: "underline",
+                color: linkHoverColor,
+              }}>
                 Mens
               </Text>
             </Link>
@@ -352,12 +387,12 @@ const DesktopNav = () => {
               fontSize={"16px"}
               fontWeight={500}
               color={linkColor}
-              _hover={{
-                textDecoration: "none",
-                color: linkHoverColor,
-              }}
+              
             >
-              <Text fontSize={"18px"} fontWeight={500}>
+              <Text fontSize={"18px"} fontWeight={500}  _hover={{
+                textDecoration: "underline",
+                color: linkHoverColor,
+              }}>
                 Womens
               </Text>
             </Link>
@@ -533,12 +568,12 @@ const DesktopNav = () => {
               fontSize={"16px"}
               fontWeight={500}
               color={linkColor}
-              _hover={{
-                textDecoration: "none",
-                color: linkHoverColor,
-              }}
+             
             >
-              <Text fontSize={"18px"} fontWeight={500}>
+              <Text fontSize={"18px"}_hover={{
+                textDecoration: "underline",
+                color: linkHoverColor,
+              }} fontWeight={500}>
                 Jeans
               </Text>
             </Link>
@@ -650,12 +685,12 @@ const DesktopNav = () => {
               fontSize={"16px"}
               fontWeight={500}
               color={linkColor}
-              _hover={{
-                textDecoration: "none",
-                color: linkHoverColor,
-              }}
+              
             >
-              <Text fontSize={"18px"} fontWeight={500}>
+              <Text fontSize={"18px"} fontWeight={500}  _hover={{
+                textDecoration: "underline",
+                color: linkHoverColor,
+              }}>
                 Sale
               </Text>
             </Link>

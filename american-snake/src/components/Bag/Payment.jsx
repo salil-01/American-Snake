@@ -55,7 +55,12 @@ const CardDetail = () => {
   // const navigate = useNavigate();
   const toast = useToast();
   // const navigate = useNavigate();
-  
+  let getDate = ()=>{
+    let date = Date.now();
+    let d = new Date(date);
+    let ds = d.toLocaleDateString();
+    return ds;
+  }
   const handleSubmit = () => {
     toast({
       position: "top",
@@ -75,7 +80,9 @@ const CardDetail = () => {
       let orderData = {
         products:[...bagData],
         address:{
-          ...addressData
+          ...addressData,
+          created : getDate(),
+          status:"pending"
         }
       }
       console.log(orderData);

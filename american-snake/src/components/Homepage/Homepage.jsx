@@ -14,18 +14,24 @@ export const Homepage = () => {
         <div >
             <Navbar />
             <Carousel />
-            <Image src={bannarImg1} />
-            <Image src={bannarImg2} />
-            <Image src={bannarImg3} />
+            <Box width={"100%"}><Image src={bannarImg1} width={"100%"} /></Box>
+            <Box width={"100%"}>
+            <Image  src={bannarImg2}width={"100%"} />
+            </Box>
+            <Box width={"100%"}>
+            <Image src={bannarImg3} width={"100%"} />
+            </Box>
             <Box>
                 <Heading margin={"50px 0"} fontSize={"40px"} fontWeight={"700"}>
                     Best seller of the Week
                 </Heading>
             </Box>
-            <Box margin={"30px 0"} padding={"2px 12px"}>
+            <Box width={"100%"} margin={"30px auto"} padding={"2px 12px"}>
                 <ProductCarousel />
             </Box>
-            <Image src={bannarImg4} />
+            <Box width={"100%"}>
+            <Image src={bannarImg4} width={"100%"} />
+            </Box>
             <Footer />
         </div>
     );

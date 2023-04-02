@@ -16,6 +16,7 @@ import { Login } from "./Login";
 import { WomensProduct } from "./WomensProduct";
 import { SingleProductWomen } from "./SingleProductWomen";
 import { SingleProductMen } from "./SingleProductMen";
+import { PrivateRoute } from "./PrivateRoute";
 
 export const MainRoutes = () => {
   return (
@@ -27,49 +28,61 @@ export const MainRoutes = () => {
         <Route
           path="/admin-dashboard"
           element={
-            <Sidebar>
-              <Dashboard />
-            </Sidebar>
+            <PrivateRoute>
+              <Sidebar>
+                <Dashboard />
+              </Sidebar>
+            </PrivateRoute>
           }
         />
         <Route
           path="/admin-addproduct"
           element={
-            <Sidebar>
-              <AddProduct />
-            </Sidebar>
+            <PrivateRoute>
+              <Sidebar>
+                <AddProduct />
+              </Sidebar>
+            </PrivateRoute>
           }
         />
         <Route
           path="/admin-products"
           element={
-            <Sidebar>
-              <AllProducts />
-            </Sidebar>
+            <PrivateRoute>
+              <Sidebar>
+                <AllProducts />
+              </Sidebar>
+            </PrivateRoute>
           }
         />
         <Route
           path="/admin-editproduct/:id"
           element={
-            <Sidebar>
-              <EditProduct />
-            </Sidebar>
+            <PrivateRoute>
+              <Sidebar>
+                <EditProduct />
+              </Sidebar>
+            </PrivateRoute>
           }
         />
         <Route
           path="/admin-users"
           element={
-            <Sidebar>
-              <AllUsers />
-            </Sidebar>
+            <PrivateRoute>
+              <Sidebar>
+                <AllUsers />
+              </Sidebar>
+            </PrivateRoute>
           }
         />
         <Route
           path="/admin-orders"
           element={
-            <Sidebar>
-              <AllOrders />
-            </Sidebar>
+            <PrivateRoute>
+              <Sidebar>
+                <AllOrders />
+              </Sidebar>
+            </PrivateRoute>
           }
         />
 
@@ -79,9 +92,26 @@ export const MainRoutes = () => {
         <Route path="/products-men" element={<MensProduct />} />
         <Route path="/products-women" element={<WomensProduct />} />
         <Route path="/singleproduct-men/:id" element={<SingleProductMen />} />
-        <Route path="/singleproduct-women/:id" element={<SingleProductWomen />} />
-        <Route path="/bag" element={<Bag />} />
-        <Route path="/cart" element={<Cartpage />} />
+        <Route
+          path="/singleproduct-women/:id"
+          element={<SingleProductWomen />}
+        />
+        <Route
+          path="/bag"
+          element={
+            <PrivateRoute>
+              <Bag />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute>
+              <Cartpage />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </>
   );

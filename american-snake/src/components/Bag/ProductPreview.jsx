@@ -1,3 +1,4 @@
+import { DeleteIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -29,6 +30,15 @@ const ProductPreview = ({ setTotal }) => {
     );
     dispatch(updateBag(updatedData));
   };
+
+  //delete functionality
+  const removeitem = (id) => {
+    const updatedData = bagData.filter((el) => {
+      return el.id !== id;
+    });
+    dispatch(updateBag(updatedData));
+    // window.location.reload();
+  };
   useEffect(() => {
     let tempprice =
       bagData.length > 0 &&
@@ -39,20 +49,22 @@ const ProductPreview = ({ setTotal }) => {
     setTotal(tempprice);
   }, [handleChange]);
   return (
-    <div style={{ marginTop: "15px" }}>
+    <div style={{ marginTop: "15px", width: "100%" }}>
       {bagData.length > 0 ? (
         bagData?.map((element) => (
-          <Stack key={element.id} display={"flex"} alignItems={"center"}>
-            <Box
-              w={{ lg: "100%" }}
-              padding={"30px 0"}
-              borderBottom={"1px solid gray"}
-            >
+          <Stack
+            key={element.id}
+            width={"100%"}
+            display={"flex"}
+            alignItems={"center"}
+          >
+            <Box padding={"30px 0"} borderBottom={"1px solid gray"}>
               <Stack
                 display={"flex"}
                 flexDirection={{ lg: "row", base: "column" }}
                 justifyContent={"space-evenly"}
-                alignItems={"top"}
+                alignItems={{ sm: "center", md: "center", lg: "top" }}
+                // alignItems={"top"}
                 spacing={5}
                 gap={"10px"}
               >
@@ -62,10 +74,16 @@ const ProductPreview = ({ setTotal }) => {
 
                 <Box padding={"5px"} w={"70%"}>
                   <Stack spacing={3} textAlign={{ base: "center", lg: "left" }}>
-                    <Text fontSize={"12px"}>{element.title}</Text>
-                    <Text fontSize={"12px"}> ₹{element.price}</Text>
-                    <Text fontSize={"12px"}>Color: Gray</Text>
-                    <HStack>
+                    <Text fontSize={"14px"}>{element.title}</Text>
+                    <Text fontSize={"14px"}> ₹{element.price}</Text>
+                    <Text fontSize={"14px"}>Color: Gray</Text>
+                    <HStack
+                      justifyContent={{
+                        sm: "space-between",
+                        md: "space-between",
+                        lg: "start",
+                      }}
+                    >
                       <Select
                         fontSize={"11px"}
                         w={"80px"}
@@ -90,16 +108,25 @@ const ProductPreview = ({ setTotal }) => {
                         <option value="5">5</option>
                       </Select>
                     </HStack>
-                    <Link to={"/cart"} style={{ textDecoration: "underline" }}>
-                      Move to Favourite
-                    </Link>
+                    <Text>
+                      <Button
+                        variant={"link"}
+                        colorScheme={"black"}
+                        fontSize={"14px"}
+                        onClick={() => {
+                          removeitem(element.id);
+                        }}
+                      >
+                        Remove Item
+                        <DeleteIcon />
+                      </Button>
+                    </Text>
                   </Stack>
                 </Box>
 
                 <Box></Box>
               </Stack>
             </Box>
-            <Text textAlign={"left"}>Total : ₹{price}</Text>
             <br />
           </Stack>
         ))
