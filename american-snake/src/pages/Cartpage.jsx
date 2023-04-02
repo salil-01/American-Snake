@@ -21,7 +21,6 @@ const Cartpage = () => {
     });
 
     const handleWishlist = (n) => {
-        // eslint-disable-next-line array-callback-return
         let product = Items.filter((el) => {
             if (el.id === n) return el;
         });
