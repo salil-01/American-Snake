@@ -161,7 +161,7 @@ export default function Navbar() {
             _hover={{ cursor: "pointer" }}
           >
             <HStack>
-              <Link to={"/cart"}>
+              <Link to={"#"}>
                 <IoBagOutline size={"27px"} />
               </Link>
               <span

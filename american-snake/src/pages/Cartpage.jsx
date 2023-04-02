@@ -19,23 +19,12 @@ import {
   Input,
   Checkbox,
   VStack,
-  Image,
 } from "@chakra-ui/react";
-import image from "../Assets/logo-desktop.png";
-import { useNavigate } from "react-router-dom";
 
 const Cartpage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
   const [price, setprice] = useState(0);
-  const navigate = useNavigate();
-
-  const handleClick = () => {};
-  const handleProceed = () =>{
-    alert("Order Placed Successfully");
-    navigate("/")
-  }
-
   return (
     <>
       <Navbar />
@@ -124,7 +113,6 @@ const Cartpage = () => {
                       color: "white",
                     }}
                     width="200px"
-                    onClick={handleClick}
                   >
                     Save Address
                   </Button>
@@ -146,9 +134,8 @@ const Cartpage = () => {
             <br />
             <br />
             <Divider borderColor="black" variant="solid" />
-            <br />
-            <br />
-            <Image src={image} width="60%" cursor={"pointer"} onClick={()=> alert("Payment done Successfully")}/>
+            <br/>
+            *************************
           </Box>
         </Box>
 
@@ -195,20 +182,6 @@ const Cartpage = () => {
               </Text>
             </Flex>
           </Box>
-          <br />
-          <Button
-            width="400px"
-            padding="20px"
-            color="white"
-            backgroundColor="black"
-            _hover={{
-              background: "blue",
-              color: "white",
-            }}
-            onClick={handleProceed}
-          >
-            Proceed
-          </Button>
         </Box>
       </Flex>
     </>
