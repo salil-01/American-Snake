@@ -12,7 +12,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../components/Homepage/Navbar";
 import Footer from "../components/Homepage/Footer";
-import { addToBag, addToWishlist } from "../redux/bagReducer/action";
+import { addToBag } from "../redux/bagReducer/action";
 
 const Cartpage = () => {
     const dispatch = useDispatch();
