@@ -52,6 +52,28 @@ One of the key features of the website will be its commitment to sustainability,
 </ul>
 
 
+
 ### Checkout Some Snaps
+
+#### Landing Page:
+![Screenshot 2023-04-02 at 8 49 15 PM](https://user-images.githubusercontent.com/115465646/229362474-6f5e58f0-fae8-4852-ba39-042d35b919c9.png)
+
+#### Products Section
+![Screenshot 2023-04-02 at 8 49 42 PM](https://user-images.githubusercontent.com/115465646/229362528-711f0b76-81ce-412b-99f9-335647d7a673.png)
+
+#### Detailed Product Section
+![Screenshot 2023-04-02 at 8 50 45 PM](https://user-images.githubusercontent.com/115465646/229362571-503899f2-b928-4a7c-bee0-e435d8ce0834.png)
+
+#### Carts Section
+![Screenshot 2023-04-02 at 8 51 07 PM](https://user-images.githubusercontent.com/115465646/229362650-9ffb472b-446b-4f41-8b81-4e4d33003a49.png)
+
+#### Login
+![Screenshot 2023-04-02 at 8 50 00 PM](https://user-images.githubusercontent.com/115465646/229362598-d3b205a4-fa3f-4503-adbf-96cd2e6e4f88.png)
+
+#### Admin Dashboard
+![Screenshot 2023-04-02 at 8 51 23 PM](https://user-images.githubusercontent.com/115465646/229362617-05e37822-0b76-4acd-8c8a-c53f7f7c75a4.png)
+
+#### Add Products 
+![Screenshot 2023-04-02 at 8 52 00 PM](https://user-images.githubusercontent.com/115465646/229362692-89fdc982-72c7-4341-98fc-030aaef9f7d8.png)
 
 
