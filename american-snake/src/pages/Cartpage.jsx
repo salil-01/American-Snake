@@ -123,7 +123,7 @@ const Cartpage = () => {
                       color: "white",
                     }}
                     width="200px"
-                    onClick={()=> alert("Adress Saved")}
+                    onClick={()=> alert("Adress Saved")} 
                   >
                     Save Address
                   </Button>
