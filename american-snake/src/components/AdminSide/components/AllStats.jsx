@@ -21,9 +21,10 @@ const StatsCard = (props) => {
     <Stat
       px={{ base: 2, md: 4 }}
       py={"5"}
-      shadow={"xl"}
+      boxShadow={"base"}
       // border={"1px solid"}
       borderColor={useColorModeValue("gray.500", "gray.500")}
+      borderRadius={"3px"}
       backgroundColor={"white"}
     >
       <Flex justifyContent={"space-between"}>
@@ -102,6 +103,7 @@ export const AllStats = () => {
           />
           <StatsCard
             title={"Total  Orders"}
+            
             stat={orderCount} //MAPED TOTAL Users  NUMBER
             icon={<FiShoppingCart size={"3em"} />}
           />

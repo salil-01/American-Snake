@@ -1,12 +1,10 @@
 import React from "react";
 import {
   IconButton,
-  Avatar,
   Box,
   CloseButton,
   Flex,
   HStack,
-  VStack,
   Icon,
   useColorModeValue,
   Link,
@@ -20,30 +18,33 @@ import {
   MenuItem,
   MenuList,
   Input,
-  Spacer,
+  Image,
 } from "@chakra-ui/react";
 import { FiHome, FiMenu, FiBell, FiChevronDown } from "react-icons/fi";
 import { IoMdSettings } from "react-icons/io";
 import { MdAddShoppingCart } from "react-icons/md";
 import { HiUsers } from "react-icons/hi";
-import { TbReportMoney } from "react-icons/tb";
-import { BsBagCheck, BsBag, BsShop } from "react-icons/bs";
-import { AiOutlineBars } from "react-icons/ai";
+// import { TbReportMoney } from "react-icons/tb";
+import { BsBagCheck, BsBag } from "react-icons/bs";
+// import { AiOutlineBars } from "react-icons/ai";
 import { FaUserFriends } from "react-icons/fa";
 import { useToast } from "@chakra-ui/react";
 import { BsSearch } from "react-icons/bs";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../redux/auth/action";
+import logo from "../../../Assets/americanSnake.png"
 const LinkItems = [
   { name: "DashBoard", icon: FiHome, path: "/admin-dashboard" },
   { name: "Products", icon: BsBag, path: "/admin-products" },
-  { name: "Add products", icon: MdAddShoppingCart, path: "/admin-addproduct" },
+  { name: "Add Product", icon: MdAddShoppingCart, path: "/admin-addproduct" },
   { name: "Orders", icon: BsBagCheck, path: "/admin-orders" },
   { name: "Users", icon: HiUsers, path: "/admin-users" },
   { name: "Go Back", icon: FaUserFriends, path: "/" },
 ];
 export default function Sidebar({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  
 
   return (
     <>
@@ -51,7 +52,6 @@ export default function Sidebar({ children }) {
         fontFamily={
           "Assistant, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
         }
-        
       >
         <SidebarContent
           onClose={() => onClose}
@@ -73,7 +73,11 @@ export default function Sidebar({ children }) {
         </Drawer>
         {/* mobilenav */}
         <MobileNav onOpen={onOpen} />
-        <Box ml={{ base: 0, md: 60 }} p="4" backgroundColor={"rgb(239, 238, 241)"}>
+        <Box
+          ml={{ base: 0, md: 60 }}
+          p="4"
+          backgroundColor={"rgb(239, 238, 241)"}
+        >
           {children}
         </Box>
       </Box>
@@ -95,8 +99,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <img
-          src="american-eagle.png"
+        <Image
+        _hover={{
+          cursor:"pointer"
+        }}
+          src={logo}
           alt="admin_logo"
           width={"200px"}
           onClick={() => navigate("/")}
@@ -149,6 +156,10 @@ const NavItem = ({ icon, children, ...rest }) => {
 const MobileNav = ({ onOpen, ...rest }) => {
   const navigate = useNavigate();
   const toast = useToast();
+  const dispatch = useDispatch();
+  const auth = useSelector((store)=>{
+    return store.AuthReducer.isAdminAuth;
+  })
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -158,7 +169,6 @@ const MobileNav = ({ onOpen, ...rest }) => {
       bg={useColorModeValue("white", "gray.900")}
       style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
       mb={"2px"}
-    
       justifyContent={{ base: "space-between", md: "space-between" }}
       {...rest}
     >
@@ -227,21 +237,31 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 </Box>
               </HStack>
             </MenuButton>
-            <MenuList>
-              <MenuItem>Profile</MenuItem>
-              <MenuItem>Settings</MenuItem>
-              <MenuDivider />
-              <MenuItem
+            <MenuList padding={"10px"}>
+              <MenuItem borderRadius={"2px"} _hover={{
+                bg:"#1D2B4F",
+                color:"white"
+              }}>Profile</MenuItem>
+              <MenuItem  borderRadius={"2px"} _hover={{
+                bg:"#1D2B4F",
+                color:"white"
+              }}>Settings</MenuItem>
+              
+              <MenuItem  borderRadius={"2px"} _hover={{
+                bg:"#1D2B4F",
+                color:"white"
+              }}
                 onClick={() => {
+
                   toast({
-                    title: "Signed Out.",
+                    title: "Logged Out Successfull",
                     position: "top",
-                    description: "Redirected to User Side.",
+                    description: "Redirecting to User Side....",
                     status: "success",
-                    duration: 9000,
+                    duration: 3000,
                     isClosable: true,
                   });
-
+                  dispatch(logout);
                   navigate("/");
                 }}
               >

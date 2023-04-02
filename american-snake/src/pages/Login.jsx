@@ -16,11 +16,15 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import { useState, useReducer } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/auth/action";
 import Signup from "./Signup";
+import Navbar from "../components/Homepage/Navbar";
+import Footer from "../components/Homepage/Footer";
+import axios from "axios";
+import logo from "../Assets/americanSnake.png"
 // import TopNavBar from "../components/Navbar/TopNavabr";
 // import Signup from "./SignUp";
 
@@ -66,9 +70,11 @@ export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
+  const location = useLocation();
+  // console.log(location)
   const dispatcher = useDispatch();
   const authData = useSelector((store) => {
-    return store.AuthReducer;
+    return store.AuthReducer.isAdminAuth;
   });
   console.log(authData);
 
@@ -77,20 +83,26 @@ export const Login = () => {
     e.preventDefault();
     // console.log(email,password)
     setIsLoading(true);
-    fetch("https://firstcry-mockserver.onrender.com/user")
-      .then((res) => res.json())
-      .then((data) => {
-        if (validateData(data, state)) {
+    axios
+      .get("https://american-eagle-mock-server.onrender.com/admin")
+      .then((res) => {
+        if (validateData(res.data, state)) {
           // login();
           // console.log(isAuth)
           dispatcher(login);
           toast({
             position: "top",
-            title: `Login successfull`,
+            title: `Login Successfull`,
             status: "success",
             isClosable: true,
           });
-          navigate("/");
+          if (location.state) {
+            navigate(location.state, {
+              replace: true,
+            });
+          } else {
+            navigate("/");
+          }
         } else {
           toast({
             position: "top",
@@ -126,13 +138,14 @@ export const Login = () => {
   };
   return (
     <>
-      {/* <TopNavBar /> */}
+      <Navbar />
       <Flex
         // height={"80vh"}
         align={"center"}
         justify={"center"}
         bg={"rgb(239,238,241)"}
-
+        paddingTop={"50px"}
+        paddingBottom={"50px"}
         // border={"1px solid"}
       >
         <Stack
@@ -144,11 +157,13 @@ export const Login = () => {
           boxShadow={"2xl"}
           bg={"white"}
           borderRadius={"8px"}
+          width={{ sm: "80%", md: "80%", lg: "100%" }}
           marginTop={"20px"}
         >
           <Image
             cursor={"pointer"}
-            src="american-eagle.png"
+            src={logo}
+            width={{sm:"60%",md:"60%",lg:"70%"}}
             // width="100px"
             // height="100px"
             margin="auto"
@@ -168,7 +183,7 @@ export const Login = () => {
           >
             <Stack
               spacing={2}
-              width={{ sm: "250px", md: "280px", lg: "330px" }}
+              width={{ sm: "80%", md: "80%", lg: "330px" }}
               margin={"auto"}
             >
               <FormControl id="email" isRequired>
@@ -259,6 +274,7 @@ export const Login = () => {
           </Box>
         </Stack>
       </Flex>
+      <Footer />
     </>
   );
 };
