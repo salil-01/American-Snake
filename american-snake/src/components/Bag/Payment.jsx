@@ -23,16 +23,17 @@ import {
   Image,
   useToast,
 } from "@chakra-ui/react";
-// import { useNavigate } from "react-router-dom";
-import { useState, } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { postOrder, updateBag } from "../../redux/bagReducer/action";
 // let cartdata = JSON.parse(localStorage.getItem("cartdata")) || [];
 
 const CardDetail = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
-//   const {cartCount,setCartCount,setcartData} = useContext(AuthContext)
+  //   const {cartCount,setCartCount,setcartData} = useContext(AuthContext)
   const [cardNumber, setCardnumber] = useState("");
   const [cardname, setCardname] = useState("");
   const [month, setMonth] = useState("");
@@ -45,22 +46,20 @@ const CardDetail = () => {
   const [register2, setRegister2] = useState("");
   const [password2, setPassword2] = useState("");
   const dispatch = useDispatch();
-  const bagData = useSelector((store)=>{
-    return  store.BagReducer.bag;
-  })
-  const addressData = useSelector((store)=>{
-    return  store.BagReducer.address;
-  })
-  // console.log(addressData,bagData)
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const bagData = useSelector((store) => {
+    return store.BagReducer.bag;
+  });
+  const addressData = useSelector((store) => {
+    return store.BagReducer.address;
+  });
   const toast = useToast();
-  // const navigate = useNavigate();
-  let getDate = ()=>{
+  let getDate = () => {
     let date = Date.now();
     let d = new Date(date);
     let ds = d.toLocaleDateString();
     return ds;
-  }
+  };
   const handleSubmit = () => {
     toast({
       position: "top",
@@ -69,29 +68,27 @@ const CardDetail = () => {
       duration: 3000,
       isClosable: true,
     });
+    let orderData = {
+      name: addressData.name,
+      created: getDate(),
+      status: "pending",
+      city: addressData.city,
+      title: bagData[0].title,
+      price: bagData[0].price,
+      quantity: bagData[0].quantity,
+    };
     setTimeout(() => {
-      toast({
-        position: "top",
-        title: "Order Placed Successfully ✔️",
-        status: "success",
-        duration: 9000,
-        isClosable: true,
+      dispatch(postOrder(orderData)).then(() => {
+        toast({
+          position: "top",
+          title: "Order Placed Successfully ✔️",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+        dispatch(updateBag([]));
+        navigate("/")
       });
-      let orderData = {
-        products:[...bagData],
-        address:{
-          ...addressData,
-          created : getDate(),
-          status:"pending"
-        }
-      }
-      console.log(orderData);
-      // axios.post()
-      // setCartCount(0);
-      // setcartData([]);
-      // let updatedData = [];
-      // localStorage.setItem("cartdata", JSON.stringify(updatedData));
-      // navigate("/");
     }, 3000);
   };
   return (
@@ -102,7 +99,6 @@ const CardDetail = () => {
           fontSize={"1rem"}
           fontWeight={"400"}
           borderRadius={"0%"}
-        
           border={"1px solid #1d2b4f"}
           _hover={{ bg: "#1d2b4f", color: "white" }}
           onClick={onOpen}
@@ -166,6 +162,7 @@ const CardDetail = () => {
                               onChange={(e) => {
                                 setCardnumber(e.target.value);
                               }}
+                              isRequired
                             />{" "}
                             <Image
                               w="20px"
