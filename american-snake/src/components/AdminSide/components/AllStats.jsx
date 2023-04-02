@@ -103,7 +103,6 @@ export const AllStats = () => {
           />
           <StatsCard
             title={"Total  Orders"}
-            
             stat={orderCount} //MAPED TOTAL Users  NUMBER
             icon={<FiShoppingCart size={"3em"} />}
           />

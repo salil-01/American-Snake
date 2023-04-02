@@ -1,14 +1,13 @@
-import './App.css';
-import { MainRoutes } from './pages/MainRoutes';
-import { Link } from 'react-router-dom';
+import "./App.css";
+import { MainRoutes } from "./pages/MainRoutes";
+
 
 function App() {
   return (
     <div className="App">
-      <MainRoutes/>
+      <MainRoutes />
     </div>
   );
-
 }
 
 export default App;

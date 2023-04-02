@@ -24,7 +24,7 @@ import Signup from "./Signup";
 import Navbar from "../components/Homepage/Navbar";
 import Footer from "../components/Homepage/Footer";
 import axios from "axios";
-import logo from "../Assets/americanSnake.png"
+import logo from "../Assets/americanSnake.png";
 // import TopNavBar from "../components/Navbar/TopNavabr";
 // import Signup from "./SignUp";
 
@@ -163,7 +163,7 @@ export const Login = () => {
           <Image
             cursor={"pointer"}
             src={logo}
-            width={{sm:"60%",md:"60%",lg:"70%"}}
+            width={{ sm: "60%", md: "60%", lg: "70%" }}
             // width="100px"
             // height="100px"
             margin="auto"

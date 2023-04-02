@@ -6,6 +6,7 @@ import {
   POST_ORDER_REQUEST,
   POST_ORDER_SUCCESS,
   UPDATE_BAG,
+  UPDATE_WISHLIST,
 } from "./actionType";
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   address: [],
 };
 export const reducer = (state = initialState, { type, payload }) => {
+  console.log(state.bag);
   switch (type) {
     case ADD_TO_BAG: {
       return {
@@ -33,6 +35,12 @@ export const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         bag: payload,
+      };
+    }
+    case UPDATE_WISHLIST: {
+      return {
+        ...state,
+        wishlist: payload,
       };
     }
     case ADD_ADDRESS: {
@@ -59,10 +67,9 @@ export const reducer = (state = initialState, { type, payload }) => {
         ...state,
         isLoading: false,
         isError: false,
-
       };
     }
-    
+
     default:
       return state;
   }

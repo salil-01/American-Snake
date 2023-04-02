@@ -17,6 +17,7 @@ import { WomensProduct } from "./WomensProduct";
 import { SingleProductWomen } from "./SingleProductWomen";
 import { SingleProductMen } from "./SingleProductMen";
 import { PrivateRoute } from "./PrivateRoute";
+import { NotFound } from "./Notfound";
 
 export const MainRoutes = () => {
   return (
@@ -105,13 +106,14 @@ export const MainRoutes = () => {
           }
         />
         <Route
-          path="/cart"
+          path="/wishlist"
           element={
             <PrivateRoute>
               <Cartpage />
             </PrivateRoute>
           }
         />
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </>
   );

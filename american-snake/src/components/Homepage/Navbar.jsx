@@ -153,7 +153,7 @@ export default function Navbar() {
             _hover={{ cursor: "pointer" }}
           >
             <HStack>
-              <Link to={"/cart"}>
+              <Link to={"/wishlist"}>
                 <CiHeart size={"28px"} />
               </Link>
               <span

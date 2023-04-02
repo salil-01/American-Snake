@@ -74,13 +74,9 @@ export const AllProducts = () => {
                     Title : {el.title.substring(0, 30)}...
                   </Heading>
                   <Text color="gray">Brand : {el.brand}</Text>
+                  <Text color="gray">Category : {el.type}</Text>
                   <Text color="gray">
-                    Category :{" "}
-                    {el.type}
-                  </Text>
-                  <Text color="gray">
-                    Gender :{" "}
-                    {el.category==="mens"?"Men":"Women"}
+                    Gender : {el.category === "mens" ? "Men" : "Women"}
                   </Text>
                   <Text color="gray">MRP : ₹{el.price}</Text>
 
