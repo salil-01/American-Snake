@@ -26,6 +26,7 @@ import {
 import { useReducer, useRef, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import logo from "../Assets/americanSnake.png"
 
 const initialState = {
   name: "",
@@ -211,10 +212,10 @@ export default function Signup() {
               <VStack margin={"20px auto"}>
                 <Image
                   cursor={"pointer"}
-                  src="american-eagle.png"
+                  src={logo}
                   borderRadius={"50px"}
                   margin="auto"
-                  boxSize={"100%"}
+                  boxSize={"80%"}
                   onClick={() => navigate("/")}
                 />
                 <Text fontWeight={"bold"} textAlign={"left"}>

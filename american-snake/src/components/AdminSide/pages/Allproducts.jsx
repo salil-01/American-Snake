@@ -56,10 +56,11 @@ export const AllProducts = () => {
           productsData?.products?.map((el) => (
             <Card
               key={el.id}
-              boxShadow={"md"}
+              boxShadow={"base"}
               _hover={{
-                "box-shadow": "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+                "box-shadow": "rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px",
               }}
+              
             >
               <CardBody>
                 <Image src={el.image_front} width={"100%"} />
