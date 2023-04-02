@@ -15,9 +15,10 @@ export const reducer = (state = initialState, { type, payload }) => {
     case ADD_TO_WISHLIST: {
       return {
         ...state,
-        wishlist: [state.wishlist, payload],
+        wishlist: [...state.wishlist, payload],
       };
     }
+    
     default:
       return state;
   }

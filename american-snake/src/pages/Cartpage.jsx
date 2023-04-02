@@ -3,40 +3,78 @@ import {
     Button,
     Center,
     Grid,
+    Heading,
     Image,
     Stack,
     Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Navbar from "../components/Homepage/Navbar";
+import Footer from "../components/Homepage/Footer";
+import { addToBag, addToWishlist } from "../redux/bagReducer/action";
 
 const Cartpage = () => {
+    const dispatch = useDispatch();
+    const Items = useSelector((store) => {
+        return store.BagReducer.wishlist;
+    });
+
+    const handleWishlist = (n) => {
+        // eslint-disable-next-line array-callback-return
+        let product = Items.filter((el) => {
+            if (el.id === n) return el;
+        });
+        dispatch(addToBag(product));
+
+        // removeItem
+        // const updateData = Items.filter((el) => {
+        //     if (el.id !== n) return el;
+        // });
+        // dispatch(addToWishlist(updateData));
+    };
+
     return (
         <div>
-            Cartpage
-            <Center>
-                <Grid templateColumns="repeat(4, 1fr)" gap={6}>
-                    <CartProductCard />
-                    <CartProductCard />
-                    <CartProductCard />
-                    <CartProductCard />
-                    <CartProductCard />
-                    <CartProductCard />
-                </Grid>
+            <Navbar />
+            <Center m={"40px 5px"}>
+                {Items.length !== 0 ? (
+                    <Grid templateColumns="repeat(4, 1fr)" gap={6}>
+                        {Items?.map((el) => (
+                            <CartProductCard
+                                key={el.id}
+                                {...el}
+                                handleWishlist={handleWishlist}
+                            />
+                        ))}
+                    </Grid>
+                ) : (
+                    <Heading>Your Wishlist is Empty</Heading>
+                )}
             </Center>
+            <Footer />
         </div>
     );
 };
-const CartProductCard = () => {
+const CartProductCard = ({
+    id,
+    image_front,
+    title,
+    price,
+    brand,
+    handleWishlist,
+}) => {
     return (
         <Box w={"fit-content"} fontSize={"11px"} h={"560px"} padding={2}>
             <Stack>
-                <Image src="https://imagescdn.aeo.in/img/app/product/7/776573-9586557.jpg?auto=format&w=298" />
-                <Text textAlign={"left"}>
-                    AMERICAN EAGLE MEN BLUE SUPER SOFT PATTERNED
-                </Text>
+                <Box h={"411px"}>
+                    <Image src={image_front} w={"100%"} h={"100%"} />
+                </Box>
+                <Text textAlign={"left"}>{title.substring(0, 50)}</Text>
                 <Text textAlign={"left"} fontWeight={"bold"}>
-                    Rs. 999
+                    Rs. {price}
                 </Text>
+                <Text textAlign={"left"}>Brand: {brand}</Text>
                 <Button
                     variant={"outline"}
                     borderRadius={0}
@@ -44,6 +82,7 @@ const CartProductCard = () => {
                     fontSize={"12px"}
                     w={"100%"}
                     h={"30px"}
+                    onClick={() => handleWishlist(id)}
                 >
                     ADD TO CART
                 </Button>
