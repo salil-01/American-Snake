@@ -16,9 +16,9 @@ The American Eagle Clone Website is a project aimed at creating a replica of the
 One of the key features of the website will be its commitment to sustainability, just like American Eagle. The website will include information on the company's environmentally-friendly initiatives, such as using recycled materials in its products and reducing its carbon footprint.
 
 
-##### Live Demo / Deployment Link:-
+##### Live Demo / Deployment Link:- https://american-snake.netlify.app/
 
-##### Backend Server:-
+##### Backend Server:- https://american-eagle-mock-server.onrender.com/
 
 ### Build with
 
