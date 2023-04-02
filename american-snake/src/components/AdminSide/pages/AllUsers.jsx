@@ -21,10 +21,10 @@ import { useState } from "react";
 export const AllUsers = () => {
   const [loading, setLoading] = useState(false);
   const getOrderData = async (url) => {
-    return await axios.get(url);
+     await axios.get(url);
   };
   const deleteOrder = async (url, id) => {
-    return await axios.delete(`${url}/${id}`);
+     await axios.delete(`${url}/${id}`);
   };
 
   const [data, setData] = useState([]);
@@ -43,13 +43,14 @@ export const AllUsers = () => {
     }
   }, [data.length]);
   const handleDelete = (id) => {
-    setLoading(true);
-    deleteOrder("https://firstcry-mockserver.onrender.com/user", id)
-      .then((e) => getOrderData())
-      .catch((e) => getOrderData())
-      .finally(() => {
-        setLoading(false);
-      });
+    console.log(id);
+    // setLoading(true);
+    // deleteOrder("https://american-eagle-mock-server.onrender.com/user", id)
+    //   .then((e) => getOrderData("https://american-eagle-mock-server.onrender.com/user"))
+    //   .catch((e) => getOrderData("https://american-eagle-mock-server.onrender.com/user"))
+    //   .finally(() => {
+    //     setLoading(false);
+    //   });
   };
 
   return (

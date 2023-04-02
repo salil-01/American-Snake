@@ -7,6 +7,7 @@ import {
   POST_ORDER_REQUEST,
   POST_ORDER_SUCCESS,
   UPDATE_BAG,
+  UPDATE_WISHLIST,
 } from "./actionType";
 
 export const addToBag = (obj) => (dispatch) => {
@@ -17,6 +18,9 @@ export const addToWishlist = (obj) => (dispatch) => {
 };
 export const updateBag = (obj) => (dispatch) => {
   dispatch({ type: UPDATE_BAG, payload: obj });
+};
+export const updateWishlist = (obj) => (dispatch) => {
+  dispatch({ type: UPDATE_WISHLIST, payload: obj });
 };
 export const addAddress = (obj) => (dispatch) => {
   dispatch({ type: ADD_ADDRESS, payload: obj });

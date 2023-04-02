@@ -28,18 +28,18 @@ export const SingleProdCard = ({
     >
       <Box p="5">
         <Box margin={"auto"} width={"80%"}>
-        <Image
-          //logic for image change on hover
-          //  onMouseOver={() => setOver(true)}
-          //  onMouseOut={() => setOver(false)}
-          // src={over?image_reverse:image_front}
-          src={image_front}
-          alt={"img"}
-          boxShadow="xs"
-          p="1"
-          rounded="md"
-          bg="white"
-        />
+          <Image
+            //logic for image change on hover
+            //  onMouseOver={() => setOver(true)}
+            //  onMouseOut={() => setOver(false)}
+            // src={over?image_reverse:image_front}
+            src={image_front}
+            alt={"img"}
+            boxShadow="xs"
+            p="1"
+            rounded="md"
+            bg="white"
+          />
         </Box>
         <br />
         <Text color={"black"} fontSize={"14px"}>

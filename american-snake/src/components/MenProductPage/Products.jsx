@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 export const Products = ({ prod }) => {
   // console.log(props)
   const { isLoading } = useSelector((store) => store.ProductReducer);
-  console.log(isLoading);
+  // console.log(isLoading);
   return (
     <>
       <Grid

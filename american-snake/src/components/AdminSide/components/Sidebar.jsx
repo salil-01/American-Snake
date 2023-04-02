@@ -254,7 +254,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 onClick={() => {
 
                   toast({
-                    title: "Logged Out Successfull",
+                    title: "Logged Out Successfully",
                     position: "top",
                     description: "Redirecting to User Side....",
                     status: "success",
