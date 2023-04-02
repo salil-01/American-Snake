@@ -6,14 +6,15 @@ American Eagle Outfitters® (NYSE: AEO) is a leading global specialty retailer o
 
 ### About the Project
 
+![americanSnake](https://user-images.githubusercontent.com/115465646/229346675-006ce0a7-f60c-4810-94b3-43f75053b7bb.png)
+
+
 The website will be designed to be visually appealing and easy to navigate, with clear and concise product descriptions and high-quality product images. The website will also be optimized for search engines to ensure that it appears at the top of search engine results for relevant keywords.
 
 The American Eagle Clone Website is a project aimed at creating a replica of the American Eagle website. The project involves designing and developing a website that looks and functions like the original American Eagle website.
 
 One of the key features of the website will be its commitment to sustainability, just like American Eagle. The website will include information on the company's environmentally-friendly initiatives, such as using recycled materials in its products and reducing its carbon footprint.
 
-#### Logo:
-![americanSnake](https://user-images.githubusercontent.com/115465646/229346675-006ce0a7-f60c-4810-94b3-43f75053b7bb.png)
 
 ##### Live Demo / Deployment Link:-
 
