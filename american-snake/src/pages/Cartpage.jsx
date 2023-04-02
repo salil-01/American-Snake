@@ -30,7 +30,6 @@ const Cartpage = () => {
   const [price, setprice] = useState(0);
   const navigate = useNavigate();
 
-  const handleClick = () => {};
   const handleProceed = () =>{
     alert("Order Placed Successfully");
     navigate("/")
@@ -124,7 +123,7 @@ const Cartpage = () => {
                       color: "white",
                     }}
                     width="200px"
-                    onClick={handleClick}
+                    onClick={()=> alert("Adress Saved")}
                   >
                     Save Address
                   </Button>
