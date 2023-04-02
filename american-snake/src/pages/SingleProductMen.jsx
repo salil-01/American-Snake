@@ -21,9 +21,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faMinus,
-  faPlus,
-  faRulerHorizontal,
+    faMinus,
+    faPlus,
+    faRulerHorizontal,
 } from "@fortawesome/free-solid-svg-icons";
 import { IoHeartOutline } from "react-icons/io5";
 import { Link, useParams } from "react-router-dom";
@@ -35,6 +35,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToBag } from "../redux/bagReducer/action";
 
 export const SingleProductMen = () => {
+
   const { id } = useParams();
   const [productItem, setProductItem] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -82,49 +83,41 @@ export const SingleProductMen = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { category, image_front, image_reverse, price, title, type } =
-    productItem;
+    const {
+        brand,
+        category,
+        hreftag,
+        image_front,
+        image_reverse,
+        price,
+        title,
+        type,
+    } = productItem;
 
-  return (
-    <>
-      {/* Navbar */}
-      <Navbar />
+    return (
+        <>
+            {/* Navbar */}
+            <Navbar />
 
-      {/* BreachCrums */}
-      <Box
-        h={"40px"}
-        display={"flex"}
-        alignItems={"center"}
-        bgColor={"#FAFAFA"}
-      >
-        <Box w={"fit-content"} margin={"auto"}>
-          <Breadcrumb
-            fontWeight="medium"
-            letterSpacing={"0.5px"}
-            fontSize="11px"
-          >
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">{category}</BreadcrumbLink>
-            </BreadcrumbItem>
-
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">Top</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#">{type}</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#" color={"gray"}>
-                {title}
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
-        </Box>
-      </Box>
-
+            {/* BreachCrums */}
+            <Box
+                h={"40px"}
+                display={"flex"}
+                alignItems={"center"}
+                bgColor={"#FAFAFA"}
+            >
+                <Box w={"fit-content"} margin={"auto"}>
+                    <Breadcrumb
+                        fontWeight="medium"
+                        letterSpacing={"0.5px"}
+                        fontSize="11px"
+                    >
+                        <BreadcrumbItem>
+                            <BreadcrumbLink href="#">Home</BreadcrumbLink>
+                        </BreadcrumbItem>
+                        <BreadcrumbItem>
+                            <BreadcrumbLink href="#">{category}</BreadcrumbLink>
+                        </BreadcrumbItem>
       {/* Product section */}
       {loading ? (
         <Spinner size={"xl"} />
@@ -341,98 +334,117 @@ export const SingleProductMen = () => {
         </Box>
       )}
 
-      {/* Product Details */}
-      <HStack
-        display={"flex"}
-        flexDirection={{ lg: "row", base: "column", md: "column" }}
-        alignItems={"stretch"}
-        w={"70%"}
-        margin={"auto"}
-        justifyContent={"space-evenly"}
-        padding={"20px 10px"}
-      >
-        <Box padding={"2px"}>
-          <Stack>
-            <Box textAlign={"left"} padding={"10px 2px"}>
-              <Text fontSize={"12px"} fontWeight={"bold"}>
-                Materials & Care
-              </Text>
-              <Box h={2}></Box>
-              <UnorderedList fontSize={"11px"} marginLeft={"15px"} spacing={2}>
-                <ListItem>100% Cotton</ListItem>
-                <ListItem>Machine wash</ListItem>
-              </UnorderedList>
+            {/* Product Details */}
+            <HStack
+                display={"flex"}
+                flexDirection={{ lg: "row", base: "column", md: "column" }}
+                alignItems={"stretch"}
+                w={"70%"}
+                margin={"auto"}
+                justifyContent={"space-evenly"}
+                padding={"20px 10px"}
+            >
+                <Box padding={"2px"}>
+                    <Stack>
+                        <Box textAlign={"left"} padding={"10px 2px"}>
+                            <Text fontSize={"12px"} fontWeight={"bold"}>
+                                Materials & Care
+                            </Text>
+                            <Box h={2}></Box>
+                            <UnorderedList
+                                fontSize={"11px"}
+                                marginLeft={"15px"}
+                                spacing={2}
+                            >
+                                <ListItem>100% Cotton</ListItem>
+                                <ListItem>Machine wash</ListItem>
+                            </UnorderedList>
+                        </Box>
+
+                        <Box textAlign={"left"} padding={"10px 2px"}>
+                            <Text fontSize={"12px"} fontWeight={"bold"}>
+                                The Details
+                            </Text>
+                            <Box h={2}></Box>
+                            <Box>
+                                <Text fontSize={"12px"}>
+                                    The one, the only, the legend: comfort never
+                                    goes out of style.
+                                </Text>
+                            </Box>
+                            <Box h={2}></Box>
+                            <UnorderedList
+                                fontSize={"11px"}
+                                marginLeft={"15px"}
+                                spacing={2}
+                            >
+                                <ListItem>
+                                    Style: WEA0172711700 | Color: Yellow
+                                </ListItem>
+                                <ListItem>
+                                    Model Size:Tommy is 6' 2"(1.88 m), wearing
+                                    size medium
+                                </ListItem>
+                            </UnorderedList>
+                        </Box>
+                    </Stack>
+                </Box>
+
+                <Box padding={"2px"}>
+                    <Stack>
+                        <Box textAlign={"left"} padding={"10px 2px"}>
+                            <Text fontSize={"12px"} fontWeight={"bold"}>
+                                Size & Fit
+                            </Text>
+                            <Box h={2}></Box>
+                            <UnorderedList
+                                fontSize={"11px"}
+                                marginLeft={"15px"}
+                                spacing={2}
+                            >
+                                <ListItem>Standard fit</ListItem>
+                            </UnorderedList>
+                        </Box>
+
+                        <Text
+                            fontSize={"12px"}
+                            fontWeight={"bold"}
+                            textAlign={"left"}
+                        >
+                            Need Help Finding Your Size?
+                        </Text>
+
+                        <Box textAlign={"left"} padding={"10px 2px"}>
+                            <Stack spacing={2}>
+                                <HStack>
+                                    <FontAwesomeIcon icon={faRulerHorizontal} />
+                                    <Text fontSize={"12px"} fontWeight={"bold"}>
+                                        Size Chart
+                                    </Text>
+                                </HStack>
+                                <HStack>
+                                    <Text fontSize={"12px"} fontWeight={"bold"}>
+                                        Product Disclosure
+                                    </Text>
+                                    <FontAwesomeIcon icon={faPlus} />
+                                </HStack>
+                                <HStack>
+                                    <RiFacebookFill />
+                                    <RiTwitterFill />
+                                </HStack>
+                            </Stack>
+                        </Box>
+                    </Stack>
+                </Box>
+            </HStack>
+
+            {/* Product Carousel */}
+            <Box margin={"30px 15px"}>
+                <ProductCarousel />
             </Box>
 
-            <Box textAlign={"left"} padding={"10px 2px"}>
-              <Text fontSize={"12px"} fontWeight={"bold"}>
-                The Details
-              </Text>
-              <Box h={2}></Box>
-              <Box>
-                <Text fontSize={"12px"}>
-                  The one, the only, the legend: comfort never goes out of
-                  style.
-                </Text>
-              </Box>
-              <Box h={2}></Box>
-              <UnorderedList fontSize={"11px"} marginLeft={"15px"} spacing={2}>
-                <ListItem>Style: WEA0172711700 | Color: Yellow</ListItem>
-                <ListItem>
-                  Model Size:Tommy is 6' 2"(1.88 m), wearing size medium
-                </ListItem>
-              </UnorderedList>
-            </Box>
-          </Stack>
-        </Box>
-
-        <Box padding={"2px"}>
-          <Stack>
-            <Box textAlign={"left"} padding={"10px 2px"}>
-              <Text fontSize={"12px"} fontWeight={"bold"}>
-                Size & Fit
-              </Text>
-              <Box h={2}></Box>
-              <UnorderedList fontSize={"11px"} marginLeft={"15px"} spacing={2}>
-                <ListItem>Standard fit</ListItem>
-              </UnorderedList>
-            </Box>
-
-            <Text fontSize={"12px"} fontWeight={"bold"} textAlign={"left"}>
-              Need Help Finding Your Size?
-            </Text>
-
-            <Box textAlign={"left"} padding={"10px 2px"}>
-              <Stack spacing={2}>
-                <HStack>
-                  <FontAwesomeIcon icon={faRulerHorizontal} />
-                  <Text fontSize={"12px"} fontWeight={"bold"}>
-                    Size Chart
-                  </Text>
-                </HStack>
-                <HStack>
-                  <Text fontSize={"12px"} fontWeight={"bold"}>
-                    Product Disclosure
-                  </Text>
-                  <FontAwesomeIcon icon={faPlus} />
-                </HStack>
-                <HStack>
-                  <RiFacebookFill />
-                  <RiTwitterFill />
-                </HStack>
-              </Stack>
-            </Box>
-          </Stack>
-        </Box>
-      </HStack>
-
-      {/* Product Carousel */}
-      <Box margin={"30px 15px"}>
-        <ProductCarousel />
-      </Box>
-
-      {/* Footer */}
-      <Footer />
-    </>
-  );
+            {/* Footer */}
+            <Footer />
+        </>
+    );
 };

@@ -59,8 +59,10 @@ export const reducer = (state = initialState, { type, payload }) => {
         ...state,
         isLoading: false,
         isError: false,
+
       };
     }
+    
     default:
       return state;
   }
