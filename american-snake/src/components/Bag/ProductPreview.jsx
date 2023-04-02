@@ -5,6 +5,7 @@ import {
   HStack,
   Image,
   Select,
+  Spacer,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -75,7 +76,7 @@ const ProductPreview = ({ setTotal }) => {
                 <Box padding={"5px"} w={"70%"}>
                   <Stack spacing={3} textAlign={{ base: "center", lg: "left" }}>
                     <Text fontSize={"14px"}>{element.title}</Text>
-                    <Text fontSize={"14px"}> ₹{element.price}</Text>
+                    <Text fontSize={"14px"}> ₹ {element.price}</Text>
                     <Text fontSize={"14px"}>Color: Gray</Text>
                     <HStack
                       justifyContent={{
@@ -117,8 +118,13 @@ const ProductPreview = ({ setTotal }) => {
                           removeitem(element.id);
                         }}
                       >
-                        Remove Item
                         <DeleteIcon />
+                        <Box width={"6px"}>
+                        
+                      </Box>
+                        Remove Item
+                      
+                        
                       </Button>
                     </Text>
                   </Stack>

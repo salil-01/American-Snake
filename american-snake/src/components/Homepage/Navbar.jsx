@@ -19,6 +19,7 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  useToast,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import logo from "../../Assets/americanSnake.png";
@@ -26,14 +27,17 @@ import { CiHeart, CiSearch } from "react-icons/ci";
 import { IoBagOutline, IoPersonOutline } from "react-icons/io5";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Signup from "../../pages/Signup";
+import { logout } from "../../redux/auth/action";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
   // eslint-disable-next-line no-unused-vars
   // eslint-disable-next-line no-unused-vars
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
+  const toast = useToast();
   const bagTotal = useSelector((store) => {
     return store.BagReducer.bag.length;
   });
@@ -194,25 +198,64 @@ export default function Navbar() {
               <MenuButton>
                 <IoPersonOutline size={"27px"} />
               </MenuButton>
-              <MenuList>
+              <MenuList padding={"10px"}>
                 <MenuItem>
-                  <Link to={"/login"}>
-                    <Text
-                      fontWeight={"500"}
-                      _hover={{ textDecoration: "underline" }}
-                    >
-                      Login
-                    </Text>
-                  </Link>
+                  {auth ? <Text fontWeight={"500"}>Hello , Salil 🙂</Text> : ""}
                 </MenuItem>
-                <MenuItem>
+                <MenuItem
+                  borderRadius={"2px"}
+                  _hover={{
+                    bg: "#1D2B4F",
+                    color: "white",
+                  }}
+                >
+                  {auth ? (
+                    <Link
+                      to={"#"}
+                      onClick={() => {
+                        dispatch(logout);
+                        toast({
+                          title: "Logged Out Successfully",
+                          position: "top",
+                          status: "success",
+                          duration: 3000,
+                          isClosable: true,
+                        });
+                      }}
+                    >
+                      <Text fontWeight={"500"}>Logout</Text>
+                    </Link>
+                  ) : (
+                    <Link to={"/login"}>
+                      <Text fontWeight={"500"}>Login</Text>
+                    </Link>
+                  )}
+                </MenuItem>
+                <MenuItem borderRadius={"2px"}>
                   <Box ml={"6px"}>
                     <Signup />
                   </Box>
                 </MenuItem>
                 {auth ? (
-                  <MenuItem>
-                    <Link to={"/admin-dashboard"}>
+                  <MenuItem
+                    borderRadius={"2px"}
+                    _hover={{
+                      bg: "#1D2B4F",
+                      color: "white",
+                    }}
+                  >
+                    <Link
+                      to={"/admin-dashboard"}
+                      onClick={() =>
+                        toast({
+                          title: "Welcome to Admin Dashboard..👋",
+                          position: "top",
+                          status: "success",
+                          duration: 3000,
+                          isClosable: true,
+                        })
+                      }
+                    >
                       <Text
                         fontWeight={"500"}
                         _hover={{ textDecoration: "underline" }}
@@ -264,12 +307,14 @@ const DesktopNav = () => {
               fontSize={"16px"}
               fontWeight={500}
               color={linkColor}
-              
             >
-              <Text fontSize={"18px"} fontWeight={500} _hover={{
-                textDecoration: "underline",
-                color: linkHoverColor,
-              }}>
+              <Text
+                fontSize={"18px"}
+                fontWeight={500}
+                _hover={{
+                  color: linkHoverColor,
+                }}
+              >
                 Mens
               </Text>
             </Link>
@@ -387,12 +432,14 @@ const DesktopNav = () => {
               fontSize={"16px"}
               fontWeight={500}
               color={linkColor}
-              
             >
-              <Text fontSize={"18px"} fontWeight={500}  _hover={{
-                textDecoration: "underline",
-                color: linkHoverColor,
-              }}>
+              <Text
+                fontSize={"18px"}
+                fontWeight={500}
+                _hover={{
+                  color: linkHoverColor,
+                }}
+              >
                 Womens
               </Text>
             </Link>
@@ -568,12 +615,14 @@ const DesktopNav = () => {
               fontSize={"16px"}
               fontWeight={500}
               color={linkColor}
-             
             >
-              <Text fontSize={"18px"}_hover={{
-                textDecoration: "underline",
-                color: linkHoverColor,
-              }} fontWeight={500}>
+              <Text
+                fontSize={"18px"}
+                _hover={{
+                  color: linkHoverColor,
+                }}
+                fontWeight={500}
+              >
                 Jeans
               </Text>
             </Link>
@@ -685,12 +734,14 @@ const DesktopNav = () => {
               fontSize={"16px"}
               fontWeight={500}
               color={linkColor}
-              
             >
-              <Text fontSize={"18px"} fontWeight={500}  _hover={{
-                textDecoration: "underline",
-                color: linkHoverColor,
-              }}>
+              <Text
+                fontSize={"18px"}
+                fontWeight={500}
+                _hover={{
+                  color: linkHoverColor,
+                }}
+              >
                 Sale
               </Text>
             </Link>

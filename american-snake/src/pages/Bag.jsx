@@ -421,7 +421,7 @@ export const Bag = () => {
                   marginLeft: "150px",
                 }}
               >
-                ₹{total}
+                ₹ {total}
               </p>
               <hr />
             </Flex>
@@ -432,9 +432,10 @@ export const Bag = () => {
                 style={{
                   fontSize: "14px",
                   marginLeft: "120px",
+                  color:'red'
                 }}
               >
-                ₹79
+               ₹ 79
               </p>
               <hr />
             </Flex>
@@ -446,7 +447,7 @@ export const Bag = () => {
               <p
                 style={{
                   fontSize: "14px",
-                  marginLeft: "156px",
+                  marginLeft: "165px",
                 }}
               >
                 <strong>Free</strong>
@@ -456,7 +457,7 @@ export const Bag = () => {
 
             <Divider border={"1px solid black"} />
             <Flex justifyContent={"space-between"} mt={2}>
-              <p style={{ fontSize: "14px", fontWeight: "bold" }}>
+              <p style={{ fontSize: "14px", fontWeight: "bold",marginTop:"7px" }}>
                 Total Amount
               </p>
               <p
@@ -467,7 +468,7 @@ export const Bag = () => {
                   fontWeight: "bold",
                 }}
               >
-                ₹{total - 79}
+                ₹ {total - 79}
               </p>
               <hr />
             </Flex>
