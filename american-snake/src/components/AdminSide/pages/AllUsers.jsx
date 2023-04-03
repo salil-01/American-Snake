@@ -21,10 +21,10 @@ import { useState } from "react";
 export const AllUsers = () => {
   const [loading, setLoading] = useState(false);
   const getOrderData = async (url) => {
-     await axios.get(url);
+    return await axios.get(url);
   };
   const deleteOrder = async (url, id) => {
-     await axios.delete(`${url}/${id}`);
+    return await axios.delete(`${url}/${id}`);
   };
 
   const [data, setData] = useState([]);
@@ -33,7 +33,10 @@ export const AllUsers = () => {
     if (data.length === 0) {
       setLoading(true);
       getOrderData("https://american-eagle-mock-server.onrender.com/user")
-        .then((e) => setData(e.data))
+        .then((e) => {
+          console.log(e);
+          setData(e.data)
+        })
         .catch((error) => {
           console.log(error);
         })
@@ -46,8 +49,8 @@ export const AllUsers = () => {
     console.log(id);
     // setLoading(true);
     // deleteOrder("https://american-eagle-mock-server.onrender.com/user", id)
-    //   .then((e) => getOrderData("https://american-eagle-mock-server.onrender.com/user"))
-    //   .catch((e) => getOrderData("https://american-eagle-mock-server.onrender.com/user"))
+    //   .then((e) => getOrderData())
+    //   .catch((e) => getOrderData())
     //   .finally(() => {
     //     setLoading(false);
     //   });
