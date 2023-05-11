@@ -33,8 +33,6 @@ import { logout } from "../../redux/auth/action";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
-  // eslint-disable-next-line no-unused-vars
-  // eslint-disable-next-line no-unused-vars
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const toast = useToast();
