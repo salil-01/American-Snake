@@ -86,16 +86,6 @@ export default function Navbar() {
           // border="1px solid red"
           alignItems={"center"}
         >
-          {/* <Text
-                      textAlign={useBreakpointValue({
-                          base: "center",
-                          md: "left",
-                      })}
-                      fontFamily={"heading"}
-                      color={useColorModeValue("gray.800", "white")}
-                  >
-                      <Image src={logo} w={{ lg: "240px", base: "100%" }} />
-                  </Text> */}
 
           <Box
             textAlign={useBreakpointValue({
@@ -816,46 +806,6 @@ const DesktopNav = () => {
   );
 };
 
-// const DesktopSubNav = ({ label, to, subLabel }) => {
-//     return (
-//         <Link
-//             to={to}
-//             role={"group"}
-//             display={"block"}
-//             p={2}
-//             rounded={"md"}
-//             // _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
-//         >
-//             <Stack direction={"row"} align={"center"}>
-//                 <Box border={"1px solid red"} textAlign={"left"}>
-//                     <Text
-//                         transition={"all .3s ease"}
-//                         // _groupHover={{ color: "pink.400" }}
-//                         // fontWeight={"bold"}
-//                         fontSize={"12px"}
-//                     >
-//                         {label}
-//                     </Text>
-//                     <Text fontSize={"12px"} letterSpacing={"0.5px"}>
-//                         {subLabel}
-//                     </Text>
-//                 </Box>
-//                 <Flex
-//                     transition={"all .3s ease"}
-//                     transform={"translateX(-10px)"}
-//                     opacity={0}
-//                     _groupHover={{
-//                         opacity: "100%",
-//                         transform: "translateX(0)",
-//                     }}
-//                     justify={"flex-end"}
-//                     align={"center"}
-//                     flex={1}
-//                 ></Flex>
-//             </Stack>
-//         </Link>
-//     );
-// };
 
 const MobileNav = () => {
   return (
