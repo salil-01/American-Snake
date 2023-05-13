@@ -157,6 +157,7 @@ export default function Signup() {
           isClosable: true,
         });
         dispatch({ type: "reset" });
+        navigate("/login");
       } else {
         setisLoading(false);
         toast({
@@ -281,8 +282,11 @@ export default function Signup() {
                             }
                             focusBorderColor="white"
                             style={style}
-                            type="number"
+                            type="text"
                             placeholder="Enter your mobile number"
+                            pattern="[0-9]{10}"
+                            maxLength="10"
+                            minLength={'10'}
                             marginBottom={"30px"}
                           />
                         </div>

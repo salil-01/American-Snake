@@ -112,7 +112,7 @@ export const Login = () => {
         } else {
           toast({
             position: "top",
-            title: `Wrong Credentials`,
+            title: `Wrong Email / Password`,
             status: "error",
             isClosable: true,
           });
