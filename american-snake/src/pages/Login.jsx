@@ -29,12 +29,17 @@ import logo from "../Assets/americanSnake.png";
 // import Signup from "./SignUp";
 
 function validateData(data, { email, password }) {
+  let c = 0;
   for (let i = 0; i < data.length; i++) {
     if (data[i].email == email && data[i].password == password) {
-      return true;
-    } else {
-      return false;
+      // console.log("successfully logged in")
+      c=1;
     }
+  }
+  if(c==1){
+    return true;
+  } else{
+    return false;
   }
 }
 const initialState = {
@@ -66,7 +71,7 @@ const reducer = (state, action) => {
 export const Login = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [isLoading, setIsLoading] = useState(false);
-  // const {email,password} = state;
+  const {email,password} = state;
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
   const navigate = useNavigate();
@@ -81,11 +86,12 @@ export const Login = () => {
   //handling submit event
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(email,password)
+    console.log(email,password)
     setIsLoading(true);
     axios
-      .get("https://american-eagle-mock-server.onrender.com/admin")
+      .get("https://american-eagle-mock-server.onrender.com/user")
       .then((res) => {
+        console.log(res)
         if (validateData(res.data, state)) {
           // login();
           // console.log(isAuth)
@@ -160,7 +166,7 @@ export const Login = () => {
           width={{ sm: "80%", md: "80%", lg: "100%" }}
           marginTop={"20px"}
         >
-          <Image
+          <Image  
             cursor={"pointer"}
             src={logo}
             width={{ sm: "60%", md: "60%", lg: "70%" }}
