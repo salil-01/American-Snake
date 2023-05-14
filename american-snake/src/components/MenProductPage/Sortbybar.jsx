@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Select, Spacer } from "@chakra-ui/react";
+import { Box, Button, Flex, Select } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -9,7 +9,7 @@ export const Sortbybar = () => {
     const [order, setOrder] = useState(initialOrder || "");
     const handleSort = (e) => {
         let val = e.target.value;
-        console.log(val);
+        // console.log(val);
         setOrder(val);
     };
     useEffect(() => {

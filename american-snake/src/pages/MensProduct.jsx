@@ -47,9 +47,9 @@ export const MensProduct = () => {
             <Navbar />
 
             <Box width={"100%"} margin={"auto"}>
-                <Box>
+                {/* <Box>
                     <Sortbybar />
-                </Box>
+                </Box> */}
                 <Box
                     margin={"auto"}
                     padding={'10px'}

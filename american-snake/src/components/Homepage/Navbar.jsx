@@ -80,7 +80,6 @@ export default function Navbar() {
         <Flex
           flex={{ base: 1 }}
           justify={{ base: "center", md: "start" }}
-          // custom work
           // border="1px solid red"
           alignItems={"center"}
         >

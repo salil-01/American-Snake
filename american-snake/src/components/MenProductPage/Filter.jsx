@@ -6,6 +6,7 @@ import {
     Box,
     CheckboxGroup,
     Divider,
+    Select,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -15,8 +16,10 @@ export const Filter = () => {
     //getting prev data so that on refresh checkbpx remain intact
     const initialCatData = searchParam.getAll("category");
     const initialBrandData = searchParam.getAll("brand");
+    const initialOrder = searchParam.get("order");
     const [category, setCategory] = useState(initialCatData || []);
     const [brand, setBrand] = useState(initialBrandData || []);
+    const [order, setOrder] = useState(initialOrder || "");
     // console.log(brand.includes("Puma"));
     //change event on checkbox
     const handleCategoryChange = (e) => {
@@ -41,16 +44,33 @@ export const Filter = () => {
         }
         setBrand(newBrand);
     };
+    const handleSort = (e) => {
+        let val = e.target.value;
+        // console.log(val);
+        setOrder(val);
+    };
     useEffect(() => {
         let params = {
             category,
             brand,
         };
-        // order && (params.order = order);
+        order && (params.order = order);
         setSearchParam(params);
-    }, [category, brand]);
+    }, [category, brand, order]);
     return (
         <>
+            <Box>
+                <Select
+                    placeholder="Sort By : New Arrivals"
+                    onChange={(e) => handleSort(e)}
+                    bg={"white"}
+                >
+                    <option fontSize={{ sm: "10px" }} value="asc">
+                        Price: Low to High
+                    </option>
+                    <option value="desc">Price: High to Low</option>
+                </Select>
+            </Box>
             <Box
                 p={5}
                 boxShadow={"md"}
@@ -196,8 +216,12 @@ export const Filter = () => {
                         >
                             Shoes
                         </Checkbox>
-                        <Checkbox size={{ base: "sm", md: "md", lg: "md" }}>Jeans</Checkbox>
-                        <Checkbox size={{ base: "sm", md: "md", lg: "md" }}>Footwear</Checkbox>
+                        <Checkbox size={{ base: "sm", md: "md", lg: "md" }}>
+                            Jeans
+                        </Checkbox>
+                        <Checkbox size={{ base: "sm", md: "md", lg: "md" }}>
+                            Footwear
+                        </Checkbox>
                     </Stack>
 
                     <Divider
