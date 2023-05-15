@@ -187,7 +187,7 @@ export default function Navbar() {
               </MenuButton>
               <MenuList padding={"10px"}>
                 <MenuItem>
-                  {auth ? <Text fontWeight={"500"}>Hello , Salil 🙂</Text> : ""}
+                  {auth ? <Text fontWeight={"500"}>Hello 🙂</Text> : ""}
                 </MenuItem>
                 <MenuItem
                   borderRadius={"2px"}

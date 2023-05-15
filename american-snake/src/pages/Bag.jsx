@@ -130,6 +130,43 @@ export const Bag = () => {
                                 backgroundColor: "#1d2b4f",
                             }}
                         >
+
+                          <Input
+                            type="text"
+                            name="mobile"
+                            placeholder="+91-Mobile Number"
+                            variant="flushed"
+                            onChange={handleChange}
+                            value={formData.mobile}
+                            pattern="[0-9]{10}"
+                            maxLength="10"
+                            minLength="10"
+                            isRequired
+                          />
+                        </Tooltip>
+                      </Box>
+
+                      <Box display="flex" mt={2}>
+                        <Box>
+                          <Tooltip
+                            hasArrow
+                            label="enter valid pincode"
+                            placement="top"
+                            bg="#ff7043"
+                          >
+                            <Input
+                              mt={5}
+                              type="text"
+                              name="pincode"
+                              maxLength="6"
+                              minLength="6"
+                              isRequired
+                              placeholder="Pincode*"
+                              variant="flushed"
+                              value={formData.pincode}
+                              onChange={handleChange}
+                            />
+                          </Tooltip>
                             ADD NEW SHIPPING ADDRESS
                         </Button>
                         <Box>
