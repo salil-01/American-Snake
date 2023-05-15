@@ -254,7 +254,7 @@ export const SingleProductWomen = () => {
                   other brands.
                 </Text>
               </Box>
-              <Box>
+              {/* <Box>
                 <Stack
                   direction={"row"}
                   justifyContent={{ base: "space-between" }}
@@ -296,7 +296,7 @@ export const SingleProductWomen = () => {
                     </Button>
                   </Box>
                 </Stack>
-              </Box>
+              </Box> */}
               <Text fontSize={"11px"} textAlign={"left"}>
                 This size is available online only.
               </Text>
