@@ -45,9 +45,9 @@ export const WomensProduct = () => {
       <Navbar />
 
       <Box width={"100%"} margin={"auto"}>
-        <Box>
+        {/* <Box>
           <Sortbybar />
-        </Box>
+        </Box> */}
         <Box
           margin={"10px auto"}
           width={"20%"}
