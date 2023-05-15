@@ -201,13 +201,16 @@ export const Bag = () => {
                           bg="#ff7043"
                         >
                           <Input
-                            type="number"
+                            type="text"
                             name="mobile"
                             placeholder="+91-Mobile Number"
                             variant="flushed"
-                            maxLength="10"
                             onChange={handleChange}
                             value={formData.mobile}
+                            pattern="[0-9]{10}"
+                            maxLength="10"
+                            minLength="10"
+                            isRequired
                           />
                         </Tooltip>
                       </Box>
@@ -222,9 +225,11 @@ export const Bag = () => {
                           >
                             <Input
                               mt={5}
-                              type="number"
+                              type="text"
                               name="pincode"
                               maxLength="6"
+                              minLength="6"
+                              isRequired
                               placeholder="Pincode*"
                               variant="flushed"
                               value={formData.pincode}

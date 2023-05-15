@@ -17,7 +17,7 @@ const initialState = {
   address: [],
 };
 export const reducer = (state = initialState, { type, payload }) => {
-  console.log(state.bag);
+  // console.log(state.bag);
   switch (type) {
     case ADD_TO_BAG: {
       return {

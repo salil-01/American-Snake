@@ -81,17 +81,17 @@ export const Login = () => {
   const authData = useSelector((store) => {
     return store.AuthReducer.isAdminAuth;
   });
-  console.log(authData);
+  // console.log(authData);
 
   //handling submit event
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email,password)
+    // console.log(email,password)
     setIsLoading(true);
     axios
       .get("https://american-eagle-mock-server.onrender.com/user")
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         if (validateData(res.data, state)) {
           // login();
           // console.log(isAuth)
@@ -119,7 +119,7 @@ export const Login = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         toast({
           position: "top",
           title: `Wrong Credentials`,
